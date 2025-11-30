@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+/* BACKGROUND IMAGE */
+.bg-image {
+  position: fixed; 
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* HEADER */
+.top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 70px;
+  padding: 0 20px;
+ background: linear-gradient(135deg, #d4d4d4 0%, #f0f0f0 25%, #c0c0c0 50%, #f0f0f0 75%, #d4d4d4 100%);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 10;
+}
+
+.logo img {
+  height: 60px;
+}
+
+
+/* HEADER ICONS */
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-icons button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.header-icons img {
+  height: 24px;
+  width: 24px;
+}
+
+/* NAVIGATION BAR */
+.nav-bar {
+  background: linear-gradient(to right, #42627B, #A5A5A5);
+  padding: 12px 0;
+  position: relative;
+  z-index: 9;
+}
+
+.nav-bar .nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-bar .nav-menu a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  transition: 0.2s;
+}
+
+.nav-bar .nav-menu a:hover,
+.nav-bar .nav-menu a.active {
+  color: #d7eaff;
+  border-bottom: 2px solid #d7eaff;
+  padding-bottom: 3px;
+}
+
+/* HERO / BACKGROUND BOX */
+.hero-section {
+  height: 300px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.background-box {
+  position: absolute;
+  top: 260px;
+  left: 0;
+  width: 100%;
+  height: 700px;
+  background: #979797;
+  z-index: -1;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* RESPONSIVE FOR SMALL SCREENS */
+@media screen and (max-width: 768px) {
+  .search-bar {
+    width: 150px;
+  }
+
+  .nav-bar .nav-menu {
+    flex-direction: column;
+    gap: 15px;
+    display: none; /* Hidden initially, toggle with JS */
+  }
+
+  .nav-bar .nav-menu.show {
+    display: flex;
+  }
+}
+

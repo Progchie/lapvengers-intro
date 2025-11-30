@@ -1,0 +1,93 @@
+
+.search-logo-table {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px 90px 25px 90px;
+}
+
+#searchInput {
+  width: 350px;
+  padding: 12px 20px;
+  font-size: 15px;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+#searchInput:focus {
+  border-color: #42627B;
+  box-shadow: 0 0 0 3px rgba(66, 98, 123, 0.1);
+}
+
+#salesTransactionLogo {
+  font-size: 32px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.table-transactions {
+  max-width: 95%;
+  margin: 0 auto 60px auto;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 560px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.table-transactions table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 1200px;
+}
+
+.table-transactions thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.table-transactions th {
+  background: linear-gradient(to right, #42627B, #5D7A91);
+  color: white;
+  padding: 16px 12px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  position: sticky;
+  top: 0;
+}
+
+.table-transactions td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e9ecef;
+  text-align: center;
+  color: #6c757d;
+  font-size: 14px;
+  background: white;
+}
+
+.table-transactions tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.table-transactions tbody tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.table-transactions tbody tr:nth-child(even):hover {
+  background-color: #e9ecef;
+}
+
+/* Empty state styling */
+.table-transactions td:empty::before {
+  content: "-";
+  color: #adb5bd;
+}
+
