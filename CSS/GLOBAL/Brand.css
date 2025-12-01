@@ -1,3 +1,44 @@
+
+/* SUPER MINIMAL INVISIBLE SCROLLBAR - ALL BROWSERS */
+html {
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(107, 122, 138, 0.1) transparent;
+}
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(107, 122, 138, 0.1);
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(107, 122, 138, 0.2);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(107, 122, 138, 0.3);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
+
 body {
   display: flex;
   flex-direction: column;

@@ -1,0 +1,41 @@
+<!-- ITO ANG DYNAMIC LOGIN FORM NA IFE-FETCH -->
+<div class="login-layout">
+    <header class="top-header">
+        <div class="logo">
+            <img src="/IMAGES/MAIN/Logo.png" alt="Logo">
+        </div>
+    </header>
+
+    <div class="left-panel">
+        <div class="form-box">
+            <h2>Log In</h2>
+            <div class="input-group">
+                <input type="text" required placeholder=" " id="loginEmail">
+                <label>Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" required placeholder=" " id="loginPassword">
+                <label>Password</label>
+            </div>
+            <button id="continueBtn">Continue</button>
+           <p class="signup-text">
+    Don't have an account? <a href="/HTML/GLOBAL/SignUp.html" id="signupLink">Sign Up</a>
+</p>
+        </div>
+    </div>
+
+    <div class="right-panel">
+        <img src="/IMAGES/MAIN/typing.png" alt="typing image">
+    </div>
+
+    <!-- Popup for success messages -->
+    <div class="popup" id="successPopup" style="display: none;">
+        <div class="popup-box">
+            <div class="icon">
+                <img src="/IMAGES/MAIN/check.png" alt="Success">
+            </div>
+            <p id="popupMessage">Login successful!</p>
+           
+        </div>
+    </div>
+</div>

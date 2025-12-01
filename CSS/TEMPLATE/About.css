@@ -1,0 +1,307 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Apply Roboto font globally */
+body, html, .about-section, .about-container, 
+.about-heading, .about-description, 
+p, h1, h2, h3, h4, h5, h6 {
+    font-family: "Roboto", sans-serif;
+}
+
+/* ----------------- ABOUT SECTION ----------------- */
+
+.about-section {
+    background: linear-gradient(to bottom, #ffffff, #e6e6e6, #b3c3d3);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.about-container {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+    width: 95%;
+    max-width: 1400px; /* Wider container */
+    padding: 80px 60px; /* More padding */
+    border-radius: 25px;
+    box-shadow: 
+        0 20px 50px rgba(0,0,0,0.15),
+        0 8px 25px rgba(66, 98, 123, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 650px; /* Taller container */
+}
+
+/* Add decorative silver border */
+.about-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        #42627B 0%, 
+        #6b7a8a 25%, 
+        #a8adb3 50%, 
+        #6b7a8a 75%, 
+        #42627B 100%);
+    border-radius: 25px 25px 0 0;
+}
+
+.about-heading {
+    text-align: center;
+    font-size: 60px; /* EXTRA LARGE HEADING */
+    font-weight: 700;
+    color: #42627B;
+    margin-bottom: 50px; /* More space */
+    text-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    position: relative;
+    padding-bottom: 25px;
+    width: 100%;
+    letter-spacing: 1px;
+}
+
+.about-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px; /* Longer line */
+    height: 4px; /* Thicker line */
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #42627B 50%, 
+        transparent 100%);
+}
+
+.about-description {
+    font-size: 28px; /* EXTRA LARGE TEXT - from 24px to 28px! */
+    font-weight: 400;
+    color: #333;
+    line-height: 2.0; /* More spacing between lines */
+    text-align: justify; /* Justify text */
+    max-width: 1100px; /* Wider text area */
+    margin: 0 auto;
+    padding: 45px; /* More padding inside box */
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    box-shadow: 
+        inset 0 3px 8px rgba(255, 255, 255, 0.95),
+        0 6px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    /* Explicit Roboto font with !important */
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 500; /* Slightly bolder for readability */
+}
+
+/* Add some decorative elements */
+.about-container::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px; /* Larger decorative element */
+    height: 400px;
+    background: radial-gradient(circle, rgba(66, 98, 123, 0.1) 0%, transparent 70%);
+    z-index: -1;
+    opacity: 0.5;
+}
+
+/* Fade in animation for container */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.about-container {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* RESPONSIVE ADJUSTMENTS FOR EXTRA LARGE TEXT */
+@media (max-width: 1400px) {
+    .about-container {
+        max-width: 95%;
+        padding: 70px 50px;
+    }
+    
+    .about-heading {
+        font-size: 56px;
+    }
+    
+    .about-description {
+        font-size: 26px; /* Still large */
+        padding: 40px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .about-container {
+        max-width: 95%;
+        padding: 65px 45px;
+    }
+    
+    .about-heading {
+        font-size: 52px;
+        margin-bottom: 45px;
+    }
+    
+    .about-description {
+        font-size: 24px; /* Still large */
+        padding: 35px;
+        line-height: 1.9;
+    }
+}
+
+@media (max-width: 1024px) {
+    .about-container {
+        max-width: 95%;
+        padding: 60px 40px;
+    }
+    
+    .about-heading {
+        font-size: 48px;
+        margin-bottom: 40px;
+    }
+    
+    .about-heading::after {
+        width: 220px;
+    }
+    
+    .about-description {
+        font-size: 22px; /* Still quite large */
+        padding: 32px;
+        line-height: 1.8;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 35px 15px;
+    }
+    
+    .about-container {
+        padding: 50px 35px;
+        min-height: 550px;
+    }
+    
+    .about-heading {
+        font-size: 44px;
+        margin-bottom: 38px;
+        padding-bottom: 20px;
+    }
+    
+    .about-heading::after {
+        width: 200px;
+        height: 3px;
+    }
+    
+    .about-description {
+        font-size: 21px; /* Still large on tablet */
+        padding: 28px;
+        line-height: 1.8;
+        text-align: justify;
+        border-radius: 18px;
+    }
+    
+    .about-container::after {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 600px) {
+    .about-section {
+        padding: 30px 10px;
+    }
+    
+    .about-container {
+        padding: 45px 30px;
+        min-height: 500px;
+    }
+    
+    .about-heading {
+        font-size: 40px;
+        margin-bottom: 35px;
+        padding-bottom: 18px;
+    }
+    
+    .about-heading::after {
+        width: 180px;
+    }
+    
+    .about-description {
+        font-size: 20px; /* Still readable large text */
+        padding: 25px;
+        line-height: 1.7;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-section {
+        padding: 25px 8px;
+    }
+    
+    .about-container {
+        padding: 40px 25px;
+        border-radius: 22px;
+        min-height: 450px;
+    }
+    
+    .about-heading {
+        font-size: 36px;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+    }
+    
+    .about-heading::after {
+        width: 160px;
+        height: 3px;
+    }
+    
+    .about-description {
+        font-size: 19px; /* Still larger than normal */
+        padding: 22px;
+        line-height: 1.7;
+        text-align: justify;
+    }
+    
+    .about-container::before {
+        height: 4px;
+    }
+}
+
+@media (max-width: 360px) {
+    .about-container {
+        padding: 35px 22px;
+    }
+    
+    .about-heading {
+        font-size: 32px;
+    }
+    
+    .about-description {
+        font-size: 18px;
+        padding: 20px;
+        line-height: 1.6;
+    }
+}

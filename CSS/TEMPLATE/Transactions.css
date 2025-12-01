@@ -1,93 +1,376 @@
+/* /CSS/TEMPLATE/Sales.css */
 
-.search-logo-table {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 40px 90px 25px 90px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.sales-transactions-container {
+    max-width: 2000px; /* EXTRA WIDE container */
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* ============ HEADER SECTION ============ */
+.sales-header {
+    background: linear-gradient(135deg, #42627B 0%, #314a5c 100%);
+    padding: 30px 40px;
+    color: white;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.header-title h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-title h1 i {
+    font-size: 28px;
+    color: #c0c0c0;
+}
+
+.subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.search-container {
+    position: relative;
+    width: 400px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 18px;
 }
 
 #searchInput {
-  width: 350px;
-  padding: 12px 20px;
-  font-size: 15px;
-  border: 2px solid #ddd;
-  border-radius: 25px;
-  outline: none;
-  transition: all 0.3s ease;
-  background: white;
+    width: 100%;
+    padding: 16px 20px 16px 50px;
+    font-size: 16px;
+    border: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 #searchInput:focus {
-  border-color: #42627B;
-  box-shadow: 0 0 0 3px rgba(66, 98, 123, 0.1);
+    outline: none;
+    box-shadow: 0 6px 20px rgba(66, 98, 123, 0.3);
+    background: white;
 }
 
-#salesTransactionLogo {
-  font-size: 32px;
-  font-weight: 700;
-  color: #2c3e50;
-  margin: 0;
+/* ============ TABLE CONTAINER ============ */
+.table-container {
+    padding: 30px 40px;
+    overflow-x: auto;
 }
 
-.table-transactions {
-  max-width: 95%;
-  margin: 0 auto 60px auto;
-  overflow-x: auto;
-  overflow-y: auto;
-  max-height: 560px;
-  border-radius: 15px;
-  background: white;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.table-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
-.table-transactions table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 1200px;
+/* ============ TABLE STYLES ============ */
+#salesTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1800px; /* VERY WIDE table */
 }
 
-.table-transactions thead {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* TABLE HEADER */
+#salesTable thead {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf0 100%);
 }
 
-.table-transactions th {
-  background: linear-gradient(to right, #42627B, #5D7A91);
-  color: white;
-  padding: 16px 12px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 14px;
-  border: none;
-  position: sticky;
-  top: 0;
+#salesTable th {
+    padding: 20px 25px; /* MORE PADDING for wider columns */
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+    color: #2c3e50;
+    border-bottom: 2px solid #ddd;
+    white-space: nowrap;
+    min-width: 150px; /* MINIMUM WIDTH for each column */
+    position: relative;
 }
 
-.table-transactions td {
-  padding: 14px 12px;
-  border-bottom: 1px solid #e9ecef;
-  text-align: center;
-  color: #6c757d;
-  font-size: 14px;
-  background: white;
+#salesTable th i {
+    margin-right: 10px;
+    color: #42627B;
+    font-size: 16px;
 }
 
-.table-transactions tbody tr:hover {
-  background-color: #f8f9fa;
+/* COLUMN SPECIFIC WIDTHS - MALAPAD NA COLUMNS */
+.col-id { width: 180px; min-width: 180px; }          /* Transaction ID */
+.col-date { width: 200px; min-width: 200px; }        /* Date & Time */
+.col-customer { width: 220px; min-width: 220px; }    /* Customer Name */
+.col-product { width: 250px; min-width: 250px; }     /* Laptop Model */
+.col-quantity { width: 100px; min-width: 100px; }    /* Quantity */
+.col-price { width: 150px; min-width: 150px; }       /* Unit Price */
+.col-payment { width: 180px; min-width: 180px; }     /* Payment Method */
+.col-delivery { width: 220px; min-width: 220px; }    /* Delivery Info */
+.col-total { width: 180px; min-width: 180px; }       /* Total Amount */
+.col-status { width: 150px; min-width: 150px; }      /* Status */
+
+/* TABLE BODY */
+#salesTable tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
 }
 
-.table-transactions tbody tr:nth-child(even) {
-  background-color: #f8f9fa;
+#salesTable tbody tr:hover {
+    background: linear-gradient(135deg, rgba(66, 98, 123, 0.03) 0%, transparent 100%);
+    transform: translateX(5px);
 }
 
-.table-transactions tbody tr:nth-child(even):hover {
-  background-color: #e9ecef;
+#salesTable td {
+    padding: 18px 25px; /* MORE PADDING */
+    font-size: 15px;
+    color: #555;
+    vertical-align: middle;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* Empty state styling */
-.table-transactions td:empty::before {
-  content: "-";
-  color: #adb5bd;
+/* Empty rows styling */
+#salesTable td:empty::before {
+    content: "—";
+    color: #999;
+    font-style: italic;
 }
 
+/* Empty State */
+.empty-row td {
+    text-align: center;
+    padding: 80px 20px !important;
+}
+
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 40px;
+}
+
+.empty-state i {
+    font-size: 64px;
+    color: #ddd;
+    margin-bottom: 20px;
+}
+
+.empty-state h4 {
+    font-size: 24px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #999;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+/* Status Badges */
+.status-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-completed {
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+}
+
+.status-pending {
+    background: linear-gradient(135deg, #FF9800, #F57C00);
+    color: white;
+}
+
+.status-cancelled {
+    background: linear-gradient(135deg, #f44336, #d32f2f);
+    color: white;
+}
+
+/* Table Footer */
+.table-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+    padding: 20px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.page-btn:hover:not(:disabled) {
+    background: #f5f5f5;
+    border-color: #42627B;
+    color: #42627B;
+}
+
+.page-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.page-info {
+    font-size: 14px;
+    color: #666;
+    font-weight: 500;
+}
+
+.rows-per-page {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.rows-per-page select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: white;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1600px) {
+    .sales-transactions-container {
+        margin: 0 20px;
+    }
+}
+
+@media (max-width: 1400px) {
+    #salesTable {
+        min-width: 1500px;
+    }
+    
+    .search-container {
+        width: 350px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .header-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+    
+    .search-container {
+        width: 100%;
+        max-width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+    
+    .sales-header {
+        padding: 25px;
+    }
+    
+    .header-title h1 {
+        font-size: 28px;
+    }
+    
+    .table-container {
+        padding: 20px;
+    }
+    
+    #salesTable th,
+    #salesTable td {
+        padding: 15px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .sales-header {
+        padding: 20px;
+    }
+    
+    .header-title h1 {
+        font-size: 24px;
+    }
+    
+    .table-container {
+        padding: 15px;
+    }
+    
+    .table-footer {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+}

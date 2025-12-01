@@ -5,20 +5,18 @@ const products = {
     name: "Acer Aspire 5",
     price: "$699.99",
     originalPrice: "$799.99",
-    image: "IMAGES/Acer/ProductAcer1.png", // Absolute path from root
-    // OR
-    // image: "https://yourdomain.com/IMAGES/Acer/ProductAcer1.png", // Full URL
+    image: "IMAGES/Acer/ProductAcer1.png",
     badge: "BEST SELLER",
     rating: 4.5,
     reviews: 128,
     specs: [
-      { name: "Processor", value: "Intel Core i5-1135G7", },
-      { name: "RAM", value: "8GB DDR4",  },
-      { name: "Storage", value: "512GB SSD", },
-      { name: "Display", value: "15.6\" Full HD IPS",  },
-      { name: "Graphics", value: "Intel Iris Xe Graphics",},
-      { name: "Battery", value: "Up to 8 hours", },
-      { name: "Weight", value: "1.65 kg", }
+      { name: "Processor", value: "Intel Core i5-1135G7" },
+      { name: "RAM", value: "8GB DDR4" },
+      { name: "Storage", value: "512GB SSD" },
+      { name: "Display", value: '15.6" Full HD IPS' },
+      { name: "Graphics", value: "Intel Iris Xe Graphics" },
+      { name: "Battery", value: "Up to 8 hours" },
+      { name: "Weight", value: "1.65 kg" }
     ],
     features: ["Thin & Light", "Backlit Keyboard", "Fingerprint Reader", "Wi-Fi 6"]
   },
@@ -32,13 +30,13 @@ const products = {
     rating: 4.8,
     reviews: 64,
     specs: [
-      { name: "Processor", value: "Intel Core i7-1165G7",},
-      { name: "RAM", value: "16GB LPDDR4X", },
-      { name: "Storage", value: "1TB NVMe SSD", },
-      { name: "Display", value: "14\" 2.8K OLED", },
-      { name: "Graphics", value: "Intel Iris Xe Graphics",},
-      { name: "Battery", value: "Up to 10 hours", },
-      { name: "Weight", value: "1.2 kg",}
+      { name: "Processor", value: "Intel Core i7-1165G7" },
+      { name: "RAM", value: "16GB LPDDR4X" },
+      { name: "Storage", value: "1TB NVMe SSD" },
+      { name: "Display", value: '14" 2.8K OLED' },
+      { name: "Graphics", value: "Intel Iris Xe Graphics" },
+      { name: "Battery", value: "Up to 10 hours" },
+      { name: "Weight", value: "1.2 kg" }
     ],
     features: ["OLED Display", "Military Grade Durability", "Thunderbolt 4", "AI Noise Cancellation"]
   },
@@ -52,13 +50,13 @@ const products = {
     rating: 4.6,
     reviews: 89,
     specs: [
-      { name: "Processor", value: "AMD Ryzen 7 5800H",},
+      { name: "Processor", value: "AMD Ryzen 7 5800H" },
       { name: "RAM", value: "16GB DDR4", icon: "💾" },
-      { name: "Storage", value: "1TB SSD + 1TB HDD",  },
-      { name: "Display", value: "15.6\" Full HD 144Hz",  },
-      { name: "Graphics", value: "NVIDIA GeForce RTX 3060", },
-      { name: "Battery", value: "Up to 6 hours", },
-      { name: "Weight", value: "2.4 kg", }
+      { name: "Storage", value: "1TB SSD + 1TB HDD" },
+      { name: "Display", value: '15.6" Full HD 144Hz' },
+      { name: "Graphics", value: "NVIDIA GeForce RTX 3060" },
+      { name: "Battery", value: "Up to 6 hours" },
+      { name: "Weight", value: "2.4 kg" }
     ],
     features: ["RGB Keyboard", "CoolBoost Technology", "4-Zone RGB", "NitroSense"]
   }
@@ -143,7 +141,7 @@ function openProductModal(productId) {
     const li = document.createElement('li');
     li.className = 'spec-item';
     li.innerHTML = `
-      <span class="spec-icon">${spec.icon}</span>
+      <span class="spec-icon">${spec.icon || '📊'}</span>
       <span class="spec-name">${spec.name}:</span>
       <span class="spec-value">${spec.value}</span>
     `;
@@ -253,7 +251,7 @@ function showNotification(message, type = 'success') {
   }, 3000);
 }
 
-// Enhanced order placement
+// ENHANCED order placement with redirect to transaction.html
 function placeOrder() {
   const email = document.getElementById('checkoutEmail')?.value;
   const address = document.getElementById('checkoutAddress')?.value;
@@ -267,8 +265,29 @@ function placeOrder() {
   showNotification('Processing your order...', 'info');
   
   setTimeout(() => {
-    ModalManager.closeAllModals();
-    showNotification(`🎉 Order confirmed! Confirmation sent to ${email}`, 'success');
+    // Get order details
+    const quantity = parseInt(document.getElementById('checkoutQuantity')?.value || 1);
+    const price = parseFloat(currentProduct.price.replace('$', ''));
+    const total = price * quantity;
+    
+    // Save transaction data to localStorage
+    const transactionData = {
+      id: 'TRX-' + Date.now(),
+      date: new Date().toLocaleString(),
+      customer: email.split('@')[0] || 'Customer',
+      product: currentProduct.name,
+      quantity: quantity,
+      unitPrice: currentProduct.price,
+      payment: 'Credit Card', // Default or get from form
+      delivery: address,
+      total: `$${total.toFixed(2)}`,
+      status: 'Completed'
+    };
+    
+    // Get existing transactions or initialize
+    let transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
+    transactions.unshift(transactionData); // Add new transaction to beginning
+    localStorage.setItem('salesTransactions', JSON.stringify(transactions));
     
     // Clear cart
     cartItems = [];
@@ -278,7 +297,19 @@ function placeOrder() {
     // Reset form
     const form = document.getElementById('checkoutForm');
     if (form) form.reset();
-  }, 2000);
+    
+    // Close modal
+    ModalManager.closeAllModals();
+    
+    // Show success message before redirect
+    showNotification('✅ Order completed! Redirecting to transactions...', 'success');
+    
+    // Redirect to transaction page after short delay
+    setTimeout(() => {
+      window.location.href = 'transaction.html';
+    }, 1000);
+    
+  }, 1500);
 }
 
 // Product comparison functionality
@@ -389,6 +420,7 @@ function initAcer() {
   window.openProductModal = openProductModal;
   window.addToCart = addToCart;
   window.toggleWishlist = toggleWishlist;
+  window.placeOrder = placeOrder;
   
   console.log('✅ Acer enhanced features initialized');
 }
@@ -399,3 +431,4 @@ if (document.readyState === 'loading') {
 } else {
   initAcer();
 }
+
