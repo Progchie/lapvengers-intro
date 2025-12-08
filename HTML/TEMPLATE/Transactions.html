@@ -1,380 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales Transactions - LAPVENGERS</title>
-    <!-- CSS will be loaded dynamically from main page -->
-    <style>
-        /* Reset to prevent spacing issues */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-        
-        #sales-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-        }
-        
-        .sales-header {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 24px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        
-        .header-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .header-title h1 {
-            font-size: 28px;
-            color: #333;
-            margin: 0;
-        }
-        
-        .header-title .subtitle {
-            color: #666;
-            font-size: 14px;
-            margin-left: 12px;
-        }
-        
-        .header-title i {
-            color: #4a6cf7;
-            font-size: 28px;
-        }
-        
-        .search-container {
-            position: relative;
-            min-width: 300px;
-        }
-        
-        .search-container i {
-            position: absolute;
-            left: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #999;
-        }
-        
-        .search-container input {
-            width: 100%;
-            padding: 12px 12px 12px 40px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.3s;
-        }
-        
-        .search-container input:focus {
-            outline: none;
-            border-color: #4a6cf7;
-        }
-        
-        .table-container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            overflow: hidden;
-            flex: 1;
-        }
-        
-        .table-wrapper {
-            overflow-x: auto;
-        }
-        
-        #salesTable {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 1200px;
-        }
-        
-        #salesTable thead {
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
-        }
-        
-        #salesTable th {
-            padding: 16px;
-            text-align: left;
-            font-weight: 600;
-            color: #495057;
-            font-size: 14px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            white-space: nowrap;
-        }
-        
-        #salesTable th i {
-            margin-right: 8px;
-            color: #6c757d;
-        }
-        
-        #salesTable td {
-            padding: 16px;
-            border-bottom: 1px solid #e9ecef;
-            color: #212529;
-            font-size: 14px;
-        }
-        
-        #salesTable tbody tr:hover {
-            background-color: #f8f9fa;
-        }
-        
-        .status-badge {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        
-        .status-completed {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        
-        .status-pending {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-        
-        .status-cancelled {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #6c757d;
-        }
-        
-        .empty-state i {
-            font-size: 48px;
-            margin-bottom: 16px;
-            color: #dee2e6;
-        }
-        
-        .empty-state h4 {
-            font-size: 18px;
-            margin-bottom: 8px;
-            color: #495057;
-        }
-        
-        .empty-state p {
-            font-size: 14px;
-            color: #6c757d;
-        }
-        
-        .transaction-row {
-            transition: background-color 0.2s;
-        }
-        
-        .transaction-row:hover {
-            background-color: #f8f9fa;
-            cursor: pointer;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .search-container {
-                width: 100%;
-            }
-            
-            #sales-content {
-                padding: 10px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div id="sales-content">
-        <div class="sales-transactions-container">
-            <!-- Header Section -->
-            <div class="sales-header">
-                <div class="header-content">
-                    <div class="header-title">
-                        <i class="fas fa-chart-bar"></i>
-                        <h1>SALES TRANSACTIONS</h1>
-                        <span class="subtitle">Track and manage all sales activities</span>
-                    </div>
-                    
-                    <div class="search-container">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchInput" placeholder="Search by ID, customer, product...">
-                    </div>
-                </div>
-            </div>
+<div id="sales-content">
+    <div class="sales-transactions-container">
 
-            <!-- Main Table -->
-            <div class="table-container">
-                <div class="table-wrapper">
-                    <table id="salesTable">
-                        <thead>
-                            <tr>
-                                <th class="col-id">
-                                    <i class="fas fa-hashtag"></i>
-                                    Transaction ID
-                                </th>
-                                <th class="col-date">
-                                    <i class="far fa-calendar-alt"></i>
-                                    Date & Time
-                                </th>
-                                <th class="col-customer">
-                                    <i class="fas fa-user"></i>
-                                    Customer Name
-                                </th>
-                                <th class="col-product">
-                                    <i class="fas fa-laptop"></i>
-                                    Laptop Model
-                                </th>
-                                <th class="col-quantity">
-                                    <i class="fas fa-box"></i>
-                                    Quantity
-                                </th>
-                                <th class="col-price">
-                                    <i class="fas fa-tag"></i>
-                                    Unit Price
-                                </th>
-                                <th class="col-payment">
-                                    <i class="fas fa-credit-card"></i>
-                                    Payment Method
-                                </th>
-                                <th class="col-delivery">
-                                    <i class="fas fa-truck"></i>
-                                    Delivery Info
-                                </th>
-                                <th class="col-total">
-                                    <i class="fas fa-calculator"></i>
-                                    Total Amount
-                                </th>
-                                <th class="col-status">
-                                    <i class="fas fa-circle"></i>
-                                    Status
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="transactionsBody">
-                            <!-- Table will be populated by JavaScript -->
-                        </tbody>
-                    </table>
+        <!-- Header Section -->
+        <div class="sales-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <i class="fas fa-chart-bar"></i>
+                    <h1>SALES TRANSACTIONS</h1>
                 </div>
+
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by ID, customer, product...">
+                </div>
+
+                <button id="exportBtn" style="
+                    padding: 10px 18px;
+                    background:#4a6cf7;
+                    color:white;
+                    border:none;
+                    border-radius:6px;
+                    cursor:pointer;
+                ">Export CSV</button>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Function to load and display transactions
-        function loadTransactions() {
-            const transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
-            const tbody = document.getElementById('transactionsBody');
-            
-            if (transactions.length === 0) {
-                tbody.innerHTML = `
-                    <tr class="empty-row">
-                        <td colspan="10">
-                            <div class="empty-state">
-                                <i class="fas fa-database"></i>
-                                <h4>No Transactions Available</h4>
-                                <p>Complete a purchase to see transactions here</p>
-                            </div>
-                        </td>
-                    </tr>
-                `;
-                return;
-            }
-            
-            tbody.innerHTML = transactions.map(transaction => `
-                <tr class="transaction-row">
-                    <td class="col-id">
-                        <strong>${transaction.id}</strong>
-                    </td>
-                    <td class="col-date">${transaction.date}</td>
-                    <td class="col-customer">${transaction.customer}</td>
-                    <td class="col-product">${transaction.product}</td>
-                    <td class="col-quantity">${transaction.quantity}</td>
-                    <td class="col-price">${transaction.unitPrice}</td>
-                    <td class="col-payment">${transaction.payment}</td>
-                    <td class="col-delivery">${transaction.delivery}</td>
-                    <td class="col-total">
-                        <strong>${transaction.total}</strong>
-                    </td>
-                    <td class="col-status">
-                        <span class="status-badge status-${transaction.status.toLowerCase()}">
-                            ${transaction.status}
-                        </span>
-                    </td>
-                </tr>
-            `).join('');
-        }
-        
-        // Search functionality
-        function setupSearch() {
-            const searchInput = document.getElementById('searchInput');
-            searchInput.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase();
-                const rows = document.querySelectorAll('.transaction-row');
-                
-                rows.forEach(row => {
-                    const text = row.textContent.toLowerCase();
-                    row.style.display = text.includes(searchTerm) ? '' : 'none';
-                });
-            });
-        }
-        
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            loadTransactions();
-            setupSearch();
-            
-            // Check if there's a new transaction from redirect
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.has('newTransaction')) {
-                // Highlight the latest transaction
-                setTimeout(() => {
-                    const firstRow = document.querySelector('.transaction-row');
-                    if (firstRow) {
-                        firstRow.style.backgroundColor = '#e8f4ff';
-                        setTimeout(() => {
-                            firstRow.style.backgroundColor = '';
-                        }, 3000);
-                    }
-                }, 500);
-            }
-        });
-    </script>
-</body>
-</html>
+        <!-- Main Table -->
+        <div class="table-container">
+            <div class="table-wrapper">
+                <table id="salesTable">
+                    <thead>
+                        <tr>
+                            <th><i class="fas fa-hashtag"></i> Transaction ID</th>
+                            <th><i class="far fa-calendar-alt"></i> Date & Time</th>
+                            <th><i class="fas fa-user"></i> Customer Name</th>
+                            <th><i class="fas fa-laptop"></i> Laptop Model</th>
+                            <th><i class="fas fa-box"></i> Quantity</th>
+                            <th><i class="fas fa-tag"></i> Unit Price</th>
+                            <th><i class="fas fa-credit-card"></i> Payment Method</th>
+                            <th><i class="fas fa-truck"></i> Delivery Info</th>
+                            <th><i class="fas fa-calculator"></i> Total Amount</th>
+                            <th><i class="fas fa-circle"></i> Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="transactionsBody">
+                        <!-- Auto-filled by JS: loadTransactions() -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -3,40 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/CSS/BRAND/Acer.css" />
+  <link rel="stylesheet" href="/CSS/BRAND/Brand.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Acer Laptops</title>
 </head>
 
 <body>
 
   <!-- BIG GRAY BACKGROUND BOX -->
   <div class="background-box"></div>
-
   <!-- PAGE CONTENT WRAPPER -->
   <div class="wrapper">
-    <aside class="sidebar">
-      <h3>BRANDS</h3>
-      <ul>
-        <li class="active">ACER</li>
-        <li>APPLE</li>
-        <li>ASUS</li>
-        <li>DELL</li>
-        <li>GIGABYTE</li>
-        <li>HP</li>
-        <li>HUAWEI</li>
-        <li>LENOVO</li>
-        <li>MSI</li>
-        <li>SAMSUNG</li>
-      </ul>
-    </aside>
+ <aside class="sidebar">
+  <h3>BRANDS</h3>
+  <ul>
+    <li><button class="brand-btn" data-brand="Acer">ACER</button></li>
+    <li><button class="brand-btn" data-brand="Apple">APPLE</button></li>
+    <li><button class="brand-btn" data-brand="Asus">ASUS</button></li>
+    <li><button class="brand-btn" data-brand="Dell">DELL</button></li>
+    <li><button class="brand-btn" data-brand="Gigabyte">GIGABYTE</button></li>
+    <li><button class="brand-btn" data-brand="Hp">HP</button></li>
+    <li><button class="brand-btn" data-brand="Huawei">HUAWEI</button></li>
+    <li><button class="brand-btn" data-brand="Lenovo">LENOVO</button></li>
+    <li><button class="brand-btn" data-brand="Msi">MSI</button></li>
+    <li><button class="brand-btn" data-brand="Samsung">SAMSUNG</button></li>
+  </ul>
+</aside>
+
 
     <div class="main-banner-column">
       <!-- BANNER -->
       <section class="banner">
-        <img src="/IMAGES/Acer/AcerLogo.jpg" alt="Banner">
+        <img src="/IMAGES/Acer/AcerLogo.jpg" alt="Acer Banner">
       </section>
-
-      
 
       <!-- CATEGORY CARDS -->
       <section class="category-cards">
@@ -58,27 +57,55 @@
 
       <!-- PRODUCTS -->
       <section class="products">
-        
-        <h2>LAPTOP</h2>
+        <h2>LAPTOPS</h2>
   
         <div class="product-grid">
-          <div class="product-card" onclick="openProductModal('acer1')">
-             <div class="stock-indicator">In Stock</div>
+          <!-- Acer Aspire 5 -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
             <img src="/IMAGES/Acer/ProductAcer1.png" alt="Acer Aspire 5">
             <p>Acer Aspire 5</p>
-            <button></button>
+            <div class="product-specs-preview">
+              <span><i class="fas fa-microchip"></i> Intel Core i5</span>
+              <span><i class="fas fa-memory"></i> 8GB RAM</span>
+              <span><i class="fas fa-hdd"></i> 512GB SSD</span>
+            </div>
+            <div class="price-tag">$699.99</div>
+            <button class="view-details-btn" data-product="acer1">
+              View Details
+            </button>
           </div>
 
-          <div class="product-card" onclick="openProductModal('acer2')">
-             <div class="stock-indicator">In Stock</div>
+          <!-- Acer OLED Swift -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
             <img src="/IMAGES/Acer/ProductAcer2.png" alt="Acer OLED Swift">
             <p>Acer OLED Swift</p>
+            <div class="product-specs-preview">
+              <span><i class="fas fa-microchip"></i> Intel Core i7</span>
+              <span><i class="fas fa-memory"></i> 16GB RAM</span>
+              <span><i class="fas fa-hdd"></i> 1TB SSD</span>
+            </div>
+            <div class="price-tag">$1,299.99</div>
+            <button class="view-details-btn" data-product="acer2">
+              View Details
+            </button>
           </div>
 
-          <div class="product-card" onclick="openProductModal('acer3')">
-             <div class="stock-indicator">In Stock</div>
+          <!-- Acer Nitro Gaming -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
             <img src="/IMAGES/Acer/ProductAcer3.png" alt="Acer Nitro Gaming">
             <p>Acer Nitro Gaming</p>
+            <div class="product-specs-preview">
+              <span><i class="fas fa-microchip"></i> AMD Ryzen 7</span>
+              <span><i class="fas fa-memory"></i> 16GB RAM</span>
+              <span><i class="fas fa-hdd"></i> 1TB SSD + 1TB HDD</span>
+            </div>
+            <div class="price-tag">$1,199.99</div>
+            <button class="view-details-btn" data-product="acer3">
+              View Details
+            </button>
           </div>
         </div>
       </section>
@@ -88,27 +115,192 @@
   <!-- PRODUCT DETAILS MODAL -->
   <div id="productModal" class="modal">
     <div class="modal-content">
-      <span class="close-btn" onclick="closeProductModal()">&times;</span>
-      <div class="product-details">
-        <div class="product-image">
-          <img id="modalProductImage" src="" alt="Product Image">
-        </div>
-        <div class="product-info">
-          <h2 id="modalProductName"></h2>
-          <div class="price" id="modalProductPrice"></div>
-          
-          <div class="specs">
-            <h3>Specifications</h3>
-            <ul id="modalProductSpecs"></ul>
+      <span class="close-modal">&times;</span>
+      
+      <div class="product-details-container">
+        <!-- Product 1: Acer Aspire 5 -->
+        <div class="product-modal" id="acer1-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Acer/ProductAcer1.png" alt="Acer Aspire 5">
+            <div class="badge best-seller">BEST SELLER</div>
           </div>
           
-          <div class="action-buttons">
-            <button class="btn btn-primary" onclick="openCheckoutModal()">
-              <i class="fas fa-shopping-cart"></i> Buy Now
-            </button>
-            <button class="btn btn-secondary">
-              <i class="fas fa-heart"></i> Add to Wishlist
-            </button>
+          <div class="modal-info-section">
+            <h2>Acer Aspire 5</h2>
+            <div class="price-section">
+              <span class="current-price">$699.99</span>
+              <span class="original-price">$799.99</span>
+            </div>
+            
+            <div class="rating-section">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="review-count">(128 reviews)</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"><i class="fas fa-microchip"></i> Processor:</span> Intel Core i5-1135G7</li>
+                <li><span class="spec-label"><i class="fas fa-memory"></i> RAM:</span> 8GB DDR4</li>
+                <li><span class="spec-label"><i class="fas fa-hdd"></i> Storage:</span> 512GB SSD</li>
+                <li><span class="spec-label"><i class="fas fa-desktop"></i> Display:</span> 15.6" Full HD IPS</li>
+                <li><span class="spec-label"><i class="fas fa-gamepad"></i> Graphics:</span> Intel Iris Xe Graphics</li>
+                <li><span class="spec-label"><i class="fas fa-battery-full"></i> Battery:</span> Up to 8 hours</li>
+                <li><span class="spec-label"><i class="fas fa-weight"></i> Weight:</span> 1.65 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">Thin & Light</span>
+                <span class="feature-tag">Backlit Keyboard</span>
+                <span class="feature-tag">Fingerprint Reader</span>
+                <span class="feature-tag">Wi-Fi 6</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart-btn" data-product="acer1">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary checkout-btn" data-product="acer1">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="acer1">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Acer OLED Swift -->
+        <div class="product-modal" id="acer2-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Acer/ProductAcer2.png" alt="Acer OLED Swift">
+            <div class="badge premium">PREMIUM</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>Acer OLED Swift</h2>
+            <div class="price-section">
+              <span class="current-price">$1,299.99</span>
+              <span class="original-price">$1,499.99</span>
+            </div>
+            
+            <div class="rating-section">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="review-count">(64 reviews)</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"><i class="fas fa-microchip"></i> Processor:</span> Intel Core i7-1165G7</li>
+                <li><span class="spec-label"><i class="fas fa-memory"></i> RAM:</span> 16GB LPDDR4X</li>
+                <li><span class="spec-label"><i class="fas fa-hdd"></i> Storage:</span> 1TB NVMe SSD</li>
+                <li><span class="spec-label"><i class="fas fa-desktop"></i> Display:</span> 14" 2.8K OLED</li>
+                <li><span class="spec-label"><i class="fas fa-gamepad"></i> Graphics:</span> Intel Iris Xe Graphics</li>
+                <li><span class="spec-label"><i class="fas fa-battery-full"></i> Battery:</span> Up to 10 hours</li>
+                <li><span class="spec-label"><i class="fas fa-weight"></i> Weight:</span> 1.2 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">OLED Display</span>
+                <span class="feature-tag">Military Grade</span>
+                <span class="feature-tag">Thunderbolt 4</span>
+                <span class="feature-tag">AI Noise Cancellation</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart-btn" data-product="acer2">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary checkout-btn" data-product="acer2">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="acer2">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Acer Nitro Gaming -->
+        <div class="product-modal" id="acer3-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Acer/ProductAcer3.png" alt="Acer Nitro Gaming">
+            <div class="badge gaming">GAMING</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>Acer Nitro Gaming</h2>
+            <div class="price-section">
+              <span class="current-price">$1,199.99</span>
+              <span class="original-price">$1,399.99</span>
+            </div>
+            
+            <div class="rating-section">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="review-count">(89 reviews)</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"><i class="fas fa-microchip"></i> Processor:</span> AMD Ryzen 7 5800H</li>
+                <li><span class="spec-label"><i class="fas fa-memory"></i> RAM:</span> 16GB DDR4</li>
+                <li><span class="spec-label"><i class="fas fa-hdd"></i> Storage:</span> 1TB SSD + 1TB HDD</li>
+                <li><span class="spec-label"><i class="fas fa-desktop"></i> Display:</span> 15.6" Full HD 144Hz</li>
+                <li><span class="spec-label"><i class="fas fa-gamepad"></i> Graphics:</span> NVIDIA GeForce RTX 3060</li>
+                <li><span class="spec-label"><i class="fas fa-battery-full"></i> Battery:</span> Up to 6 hours</li>
+                <li><span class="spec-label"><i class="fas fa-weight"></i> Weight:</span> 2.4 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">RGB Keyboard</span>
+                <span class="feature-tag">CoolBoost Technology</span>
+                <span class="feature-tag">4-Zone RGB</span>
+                <span class="feature-tag">NitroSense</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart-btn" data-product="acer3">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary checkout-btn" data-product="acer3">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="acer3">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -118,81 +310,130 @@
   <!-- CHECKOUT MODAL -->
   <div id="checkoutModal" class="modal checkout-modal">
     <div class="modal-content checkout-content">
-      <span class="close-btn" onclick="closeCheckoutModal()">&times;</span>
-      <h2>FILL OUT FORM</h2>
+      <span class="close-modal">&times;</span>
       
-    
-      <div class="checkout-form">
-        <div class="form-group">
-          <label for="Fullname">Fullname</label>
-          <input type="text" id="Fullname" placeholder="Enter your Fullname">
-        </div>
-        
+      <h2>Checkout</h2>
       
-        
-        <div class="form-group full-width">
-          <label for="address">Address</label>
-          <input type="text" id="address" placeholder="Enter your address">
+      <div class="checkout-layout">
+        <div class="checkout-form-section">
+          <h3>Shipping Information</h3>
+          
+          <div class="form-group">
+            <label for="checkoutFullname">Full Name</label>
+            <input type="text" id="checkoutFullname" placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label for="checkoutEmail">Email Address</label>
+            <input type="email" id="checkoutEmail" placeholder="Enter your email">
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="checkoutAddress">Shipping Address</label>
+            <textarea id="checkoutAddress" placeholder="Enter complete shipping address" rows="3"></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkoutCity">City</label>
+              <input type="text" id="checkoutCity" placeholder="Enter city">
+            </div>
+            
+            <div class="form-group">
+              <label for="checkoutZip">ZIP Code</label>
+              <input type="text" id="checkoutZip" placeholder="ZIP code">
+            </div>
+          </div>
+          
+          <h3 style="margin-top: 30px;">Payment Method</h3>
+          
+          <div class="form-group full-width">
+            <label for="checkoutPayment">Select Payment</label>
+            <select id="checkoutPayment">
+              <option value="">Choose payment method</option>
+              <option value="credit">Credit Card</option>
+              <option value="debit">Debit Card</option>
+              <option value="paypal">PayPal</option>
+              <option value="gcash">GCash</option>
+            </select>
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="checkoutCard">Card Number</label>
+            <input type="text" id="checkoutCard" placeholder="0000 0000 0000 0000">
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkoutExpiry">Expiry Date</label>
+              <input type="text" id="checkoutExpiry" placeholder="MM/YY">
+            </div>
+            
+            <div class="form-group">
+              <label for="checkoutCVV">CVV</label>
+              <input type="text" id="checkoutCVV" placeholder="123">
+            </div>
+          </div>
         </div>
         
-        <div class="form-group">
-          <label for="city">City</label>
-          <input type="text" id="city" placeholder="Enter your city">
+        <div class="checkout-summary-section">
+          <h3>Order Summary</h3>
+          
+          <div class="summary-item">
+            <div id="checkoutProductName">Product Name</div>
+            <div id="checkoutProductPrice">$0.00</div>
+          </div>
+          
+          <div class="summary-item">
+            <div>Quantity</div>
+            <div>
+              <select id="checkoutQuantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="summary-breakdown">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="checkoutSubtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="checkoutShipping">$15.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (10%)</span>
+              <span id="checkoutTax">$0.00</span>
+            </div>
+          </div>
+          
+          <div class="summary-total">
+            <span>TOTAL</span>
+            <span id="checkoutTotal">$0.00</span>
+          </div>
+          
+          <div class="terms-check">
+            <input type="checkbox" id="termsAgreement">
+            <label for="termsAgreement">I agree to the Terms & Conditions</label>
+          </div>
+          
+          <button class="btn btn-primary place-order-btn" style="width: 100%; margin-top: 20px;">
+            <i class="fas fa-lock"></i> Place Order
+          </button>
         </div>
-        
-        <div class="form-group">
-          <label for="zipCode">ZIP Code</label>
-          <input type="text" id="zipCode" placeholder="Enter ZIP code">
-        </div>
-        
-        <div class="form-group full-width">
-          <label for="paymentMethod">Payment Method</label>
-          <select id="paymentMethod">
-            <option value="">Select payment method</option>
-            <option value="credit">Credit Card</option>
-            <option value="debit">Debit Card</option>
-            <option value="paypal">PayPal</option>
-          </select>
-        </div>
-        
-        <div class="form-group full-width">
-          <label for="cardNumber">Card Number</label>
-          <input type="text" id="cardNumber" placeholder="Enter card number">
-        </div>
-        
-     
-      
-      <div class="order-summary">
-        <h3>Order Summary</h3>
-        <div class="order-item">
-          <span id="checkoutProductName"></span>
-          <span id="checkoutProductPrice"></span>
-        </div>
-        <div class="order-item">
-          <span>Shipping</span>
-          <span>$15.00</span>
-        </div>
-        <div class="order-item">
-          <span>Tax</span>
-          <span id="checkoutTax">$0.00</span>
-        </div>
-        <div class="order-total">
-          <span>Total</span>
-          <span id="checkoutTotal">$0.00</span>
-        </div>
-      </div>
-      
-      <div class="action-buttons" style="margin-top: 30px;">
-        <button class="btn btn-primary" onclick="placeOrder()">
-          <i class="fas fa-check"></i> Place Order
-        </button>
-        <button class="btn btn-secondary" onclick="closeCheckoutModal()">
-          Cancel
-        </button>
       </div>
     </div>
   </div>
 
+  <!-- CART COUNTER -->
+  <div class="cart-counter" id="cartCounter" style="display: none;">0</div>
+
   <script src="/JAVASCRIPT/BRAND/Acer.js"></script>
+  
 </body>
 </html>

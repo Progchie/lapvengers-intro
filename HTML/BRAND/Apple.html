@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/CSS/BRAND/Brand.css" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Apple MacBook</title>
+  
+</head>
+
+<body>
+  <!-- BIG GRAY BACKGROUND BOX -->
+  <div class="background-box"></div>
+
+  <!-- PAGE CONTENT WRAPPER -->
+  <div class="wrapper">
+ <aside class="sidebar">
+  <h3>BRANDS</h3>
+  <ul>
+    <li><button class="brand-btn" data-brand="Acer">ACER</button></li>
+    <li><button class="brand-btn" data-brand="Apple">APPLE</button></li>
+    <li><button class="brand-btn" data-brand="Asus">ASUS</button></li>
+    <li><button class="brand-btn" data-brand="Dell">DELL</button></li>
+    <li><button class="brand-btn" data-brand="Gigabyte">GIGABYTE</button></li>
+    <li><button class="brand-btn" data-brand="Hp">HP</button></li>
+    <li><button class="brand-btn" data-brand="Huawei">HUAWEI</button></li>
+    <li><button class="brand-btn" data-brand="Lenovo">LENOVO</button></li>
+    <li><button class="brand-btn" data-brand="Msi">MSI</button></li>
+    <li><button class="brand-btn" data-brand="Samsung">SAMSUNG</button></li>
+  </ul>
+</aside>
+    <div class="main-banner-column">
+      <!-- BANNER -->
+      <section class="banner">
+        <img src="/IMAGES/Apple/AppleLogo.jpg" alt="Apple Banner">
+      </section>
+
+      <!-- CATEGORY CARDS -->
+      <section class="category-cards">
+        <div class="card">
+          <h4>PROFESSIONAL WORKSTATIONS</h4>
+          <a href="#">Shop now</a>
+        </div>
+
+        <div class="card">
+          <h4>ULTRA PORTABLE</h4>
+          <a href="#">Shop now</a>
+        </div>
+
+        <div class="card">
+          <h4>CREATIVE POWERHOUSE</h4>
+          <a href="#">Shop now</a>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="products">
+        <h2>MACBOOK</h2>
+  
+        <div class="product-grid">
+          <!-- MacBook Pro 14" -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Apple/MacBookPro14.png" alt="MacBook Pro 14">
+            <p>MacBook Pro 14"</p>
+            <div class="product-specs-preview">
+              <span><i class="fas fa-microchip"></i> Apple M3 Pro</span>
+              <span><i class="fas fa-memory"></i> 18GB RAM</span>
+              <span><i class="fas fa-hdd"></i> 512GB SSD</span>
+            </div>
+            <div class="price-tag">$1,999.99</div>
+            <button class="view-details-btn" data-product="apple1">
+              View Details
+            </button>
+          </div>
+
+          <!-- MacBook Air 13" -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Apple/MacBookAir13.png" alt="MacBook Air 13">
+            <p>MacBook Air 13"</p>
+            <div class="product-specs-preview">
+              <span><i class="fas fa-microchip"></i> Apple M2</span>
+              <span><i class="fas fa-memory"></i> 8GB RAM</span>
+              <span><i class="fas fa-hdd"></i> 256GB SSD</span>
+            </div>
+            <div class="price-tag">$1,099.99</div>
+            <button class="view-details-btn" data-product="apple2">
+              View Details
+            </button>
+          </div>
+
+          <!-- MacBook Pro 16" -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Apple/MacBookPro16.png" alt="MacBook Pro 16">
+            <p>MacBook Pro 16"</p>
+            <div class="product-specs-preview">
+              <span><i class="fas fa-microchip"></i> Apple M3 Max</span>
+              <span><i class="fas fa-memory"></i> 36GB RAM</span>
+              <span><i class="fas fa-hdd"></i> 1TB SSD</span>
+            </div>
+            <div class="price-tag">$2,499.99</div>
+            <button class="view-details-btn" data-product="apple3">
+              View Details
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      
+      <div class="product-details-container">
+        <!-- Product 1: MacBook Pro 14" -->
+        <div class="product-modal" id="apple1-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Apple/MacBookPro14.png" alt="MacBook Pro 14">
+            <div class="badge premium">PREMIUM</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>MacBook Pro 14"</h2>
+            <div class="price-section">
+              <span class="current-price">$1,999.99</span>
+              <span class="original-price">$2,299.99</span>
+            </div>
+            
+            <div class="rating-section">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="review-count">(256 reviews)</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"><i class="fas fa-microchip"></i> Processor:</span> Apple M3 Pro (12-core)</li>
+                <li><span class="spec-label"><i class="fas fa-memory"></i> Memory:</span> 18GB Unified Memory</li>
+                <li><span class="spec-label"><i class="fas fa-hdd"></i> Storage:</span> 512GB SSD</li>
+                <li><span class="spec-label"><i class="fas fa-desktop"></i> Display:</span> 14.2" Liquid Retina XDR</li>
+                <li><span class="spec-label"><i class="fas fa-gamepad"></i> Graphics:</span> 18-core GPU</li>
+                <li><span class="spec-label"><i class="fas fa-battery-full"></i> Battery:</span> Up to 18 hours</li>
+                <li><span class="spec-label"><i class="fas fa-weight"></i> Weight:</span> 1.55 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">M3 Pro Chip</span>
+                <span class="feature-tag">Liquid Retina XDR</span>
+                <span class="feature-tag">Magic Keyboard</span>
+                <span class="feature-tag">Touch ID</span>
+                <span class="feature-tag">Six-speaker Sound</span>
+                <span class="feature-tag">1080p Camera</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart-btn" data-product="apple1">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary checkout-btn" data-product="apple1">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="apple1">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: MacBook Air 13" -->
+        <div class="product-modal" id="apple2-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Apple/MacBookAir13.png" alt="MacBook Air 13">
+            <div class="badge ultra-thin">ULTRA THIN</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>MacBook Air 13"</h2>
+            <div class="price-section">
+              <span class="current-price">$1,099.99</span>
+              <span class="original-price">$1,299.99</span>
+            </div>
+            
+            <div class="rating-section">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <span class="review-count">(189 reviews)</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"><i class="fas fa-microchip"></i> Processor:</span> Apple M2 (8-core)</li>
+                <li><span class="spec-label"><i class="fas fa-memory"></i> Memory:</span> 8GB Unified Memory</li>
+                <li><span class="spec-label"><i class="fas fa-hdd"></i> Storage:</span> 256GB SSD</li>
+                <li><span class="spec-label"><i class="fas fa-desktop"></i> Display:</span> 13.6" Liquid Retina</li>
+                <li><span class="spec-label"><i class="fas fa-gamepad"></i> Graphics:</span> 8-core GPU</li>
+                <li><span class="spec-label"><i class="fas fa-battery-full"></i> Battery:</span> Up to 18 hours</li>
+                <li><span class="spec-label"><i class="fas fa-weight"></i> Weight:</span> 1.24 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">M2 Chip</span>
+                <span class="feature-tag">Fanless Design</span>
+                <span class="feature-tag">MagSafe 3</span>
+                <span class="feature-tag">1080p FaceTime Camera</span>
+                <span class="feature-tag">Four-speaker Sound</span>
+                <span class="feature-tag">Backlit Keyboard</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart-btn" data-product="apple2">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary checkout-btn" data-product="apple2">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="apple2">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: MacBook Pro 16" -->
+        <div class="product-modal" id="apple3-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Apple/MacBookPro16.png" alt="MacBook Pro 16">
+            <div class="badge professional">PROFESSIONAL</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>MacBook Pro 16"</h2>
+            <div class="price-section">
+              <span class="current-price">$2,499.99</span>
+              <span class="original-price">$2,799.99</span>
+            </div>
+            
+            <div class="rating-section">
+              <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <span class="review-count">(178 reviews)</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"><i class="fas fa-microchip"></i> Processor:</span> Apple M3 Max (16-core)</li>
+                <li><span class="spec-label"><i class="fas fa-memory"></i> Memory:</span> 36GB Unified Memory</li>
+                <li><span class="spec-label"><i class="fas fa-hdd"></i> Storage:</span> 1TB SSD</li>
+                <li><span class="spec-label"><i class="fas fa-desktop"></i> Display:</span> 16.2" Liquid Retina XDR</li>
+                <li><span class="spec-label"><i class="fas fa-gamepad"></i> Graphics:</span> 40-core GPU</li>
+                <li><span class="spec-label"><i class="fas fa-battery-full"></i> Battery:</span> Up to 22 hours</li>
+                <li><span class="spec-label"><i class="fas fa-weight"></i> Weight:</span> 2.15 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">M3 Max Chip</span>
+                <span class="feature-tag">ProMotion Display</span>
+                <span class="feature-tag">Six-speaker Sound System</span>
+                <span class="feature-tag">HDMI Port</span>
+                <span class="feature-tag">SDXC Card Slot</span>
+                <span class="feature-tag">Studio-quality Mics</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-primary add-to-cart-btn" data-product="apple3">
+                <i class="fas fa-shopping-cart"></i> Add to Cart
+              </button>
+              <button class="btn btn-secondary checkout-btn" data-product="apple3">
+                <i class="fas fa-bolt"></i> Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="apple3">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="modal checkout-modal">
+  <div class="modal-content checkout-content">
+    <span class="close-modal">&times;</span>
+    
+    <h2>Checkout</h2>
+    
+    <div class="checkout-layout">
+      <div class="checkout-form-section">
+        <h3>Shipping Information</h3>
+        
+        <div class="form-group">
+          <label for="checkoutFullname">Full Name</label>
+          <input type="text" id="checkoutFullname" placeholder="Enter your full name">
+        </div>
+        
+        <div class="form-group">
+          <label for="checkoutEmail">Email Address</label>
+          <input type="email" id="checkoutEmail" placeholder="Enter your email">
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="checkoutAddress">Shipping Address</label>
+          <textarea id="checkoutAddress" placeholder="Enter complete shipping address" rows="3"></textarea>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="checkoutCity">City</label>
+            <input type="text" id="checkoutCity" placeholder="Enter city">
+          </div>
+          
+          <div class="form-group">
+            <label for="checkoutZip">ZIP Code</label>
+            <input type="text" id="checkoutZip" placeholder="ZIP code">
+          </div>
+        </div>
+        
+        <h3 style="margin-top: 30px;">Payment Method</h3>
+        
+        <div class="form-group full-width">
+          <label for="checkoutPayment">Select Payment</label>
+          <select id="checkoutPayment">
+            <option value="">Choose payment method</option>
+            <option value="credit">Credit Card</option>
+            <option value="debit">Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="gcash">GCash</option>
+          </select>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="checkoutCard">Card Number</label>
+          <input type="text" id="checkoutCard" placeholder="0000 0000 0000 0000">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="checkoutExpiry">Expiry Date</label>
+            <input type="text" id="checkoutExpiry" placeholder="MM/YY">
+          </div>
+          
+          <div class="form-group">
+            <label for="checkoutCVV">CVV</label>
+            <input type="text" id="checkoutCVV" placeholder="123">
+          </div>
+        </div>
+      </div>
+      
+      <div class="checkout-summary-section">
+        <h3>Order Summary</h3>
+        
+        <div class="summary-item">
+          <div id="checkoutProductName">Product Name</div>
+          <div id="checkoutProductPrice">$0.00</div>
+        </div>
+        
+        <div class="summary-item">
+          <div>Quantity</div>
+          <div>
+            <select id="checkoutQuantity">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="summary-breakdown">
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="checkoutSubtotal">$0.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="checkoutShipping">$15.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Tax (10%)</span>
+            <span id="checkoutTax">$0.00</span>
+          </div>
+        </div>
+        
+        <div class="summary-total">
+          <span>TOTAL</span>
+          <span id="checkoutTotal">$0.00</span>
+        </div>
+        <div class="terms-check">
+          <input type="checkbox" id="termsAgreement">
+          <label for="termsAgreement">I agree to the Terms & Conditions</label>
+        </div>
+        
+        <button class="btn btn-primary place-order-btn" style="width: 100%; margin-top: 20px;">
+          <i class="fas fa-lock"></i> Place Order
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- CART COUNTER -->
+  <div class="cart-counter" id="cartCounter" style="display: none;">0</div>
+
+  <script src="/JAVASCRIPT/BRAND/Acer.js"></script>
+
+ 
+
+  
+
+</body>
+</html>

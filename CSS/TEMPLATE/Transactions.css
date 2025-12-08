@@ -1,18 +1,5 @@
 /* /CSS/TEMPLATE/Sales.css */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-    min-height: 100vh;
-    padding: 30px;
-}
-
 .sales-transactions-container {
     max-width: 2000px; /* EXTRA WIDE container */
     margin: 0 auto;

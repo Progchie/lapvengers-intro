@@ -1,0 +1,31 @@
+<body>
+  <div id="header"></div>
+  
+  <div id="brand-content"></div> <!-- dito magbabago ang brand -->
+
+  <div id="footer"></div>
+
+  <script>
+    // Load global header and footer
+    document.getElementById('header').innerHTML = `<h1>My Header</h1>`;
+    document.getElementById('footer').innerHTML = `<p>My Footer</p>`;
+
+    // Function to load brand content dynamically
+    async function loadBrand(brand) {
+      const res = await fetch(`/HTML/GLOBAL/BRAND/${brand}.html`);
+      const html = await res.text();
+      document.getElementById('brand-content').innerHTML = html;
+    }
+
+    // Initial brand
+    loadBrand('Acer');
+
+    // Example: buttons inside brand HTML
+    document.addEventListener('click', (e) => {
+      if(e.target.classList.contains('brand-btn')){
+        const brand = e.target.dataset.brand;
+        loadBrand(brand);
+      }
+    });
+  </script>
+</body>
