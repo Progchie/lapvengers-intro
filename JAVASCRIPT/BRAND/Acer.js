@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // Brand.js - Universal JavaScript for Brand Pages (Acer, Apple, Asus, Dell)
 
 // Detect brand from page title or URL
@@ -39,6 +40,27 @@ gigabyte2: { name: "Gigabyte Aorus 17", price: 150000, originalPrice: 165000, sh
 gigabyte3: { name: "Gigabyte Aero 14", price: 65000, originalPrice: 70000, shipping: 15.00, taxRate: 0.10 }
 };
 
+=======
+
+// Cart and Wishlist data
+let cartItems = JSON.parse(localStorage.getItem('Cart')) || [];
+let wishlistItems = JSON.parse(localStorage.getItem('Wishlist')) || [];
+
+// Product data for dynamic updates
+const productData = {
+  // Acer products
+  acer1: { name: "Acer Aspire 5", price: 699.99, originalPrice: 799.99, shipping: 15.00, taxRate: 0.10 },
+  acer2: { name: "Acer OLED Swift", price: 1299.99, originalPrice: 1499.99, shipping: 15.00, taxRate: 0.10 },
+  acer3: { name: "Acer Nitro Gaming", price: 1199.99, originalPrice: 1399.99, shipping: 15.00, taxRate: 0.10 },
+
+  // Apple products
+  apple1: { name: "Apple MacBook Air", price: 999.99, originalPrice: 1199.99, shipping: 20.00, taxRate: 0.10 },
+  apple2: { name: "Apple MacBook Pro", price: 1999.99, originalPrice: 2199.99, shipping: 20.00, taxRate: 0.10 },
+  apple3: { name: "Apple iMac", price: 1799.99, originalPrice: 1999.99, shipping: 25.00, taxRate: 0.10 }
+};
+
+
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
 // Modal Manager
 const ModalManager = {
   currentProductId: null,
@@ -132,7 +154,11 @@ function openCheckoutModal(productId = null) {
   
   // Update checkout summary
   document.getElementById('checkoutProductName').textContent = product.name;
+<<<<<<< HEAD
   document.getElementById('checkoutProductPrice').textContent = `₱${product.price.toLocaleString()}`;
+=======
+  document.getElementById('checkoutProductPrice').textContent = `$${product.price.toFixed(2)}`;
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   
   // Calculate and update totals
   calculateAndUpdateTotals(product);
@@ -142,6 +168,7 @@ function openCheckoutModal(productId = null) {
   
   // Open checkout modal
   ModalManager.openModal('checkoutModal');
+<<<<<<< HEAD
 }
 
 function calculateAndUpdateTotals(product) {
@@ -170,6 +197,36 @@ function addToCart(productId = null) {
     return;
   }
   
+=======
+}
+
+function calculateAndUpdateTotals(product) {
+  const quantity = parseInt(document.getElementById('checkoutQuantity').value) || 1;
+  const subtotal = product.price * quantity;
+  const tax = subtotal * product.taxRate;
+  const shipping = product.shipping * quantity;
+  const total = subtotal + tax + shipping;
+  
+  document.getElementById('checkoutSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('checkoutTax').textContent = `$${tax.toFixed(2)}`;
+  document.getElementById('checkoutShipping').textContent = `$${shipping.toFixed(2)}`;
+  document.getElementById('checkoutTotal').textContent = `$${total.toFixed(2)}`;
+}
+
+function closeCheckoutModal() {
+  ModalManager.closeModal('checkoutModal');
+}
+
+// Cart Functions
+function addToCart(productId = null) {
+  const targetProductId = productId || ModalManager.currentProductId;
+  
+  if (!targetProductId || !productData[targetProductId]) {
+    console.error('Product not found');
+    return;
+  }
+  
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   const product = productData[targetProductId];
   
   // Check if product already in cart
@@ -188,8 +245,13 @@ function addToCart(productId = null) {
     });
   }
   
+<<<<<<< HEAD
   // Save to localStorage (brand-specific)
   localStorage.setItem(isApplePage ? 'appleCart' : isAcerPage ? 'acerCart' : isAsusPage ? 'asusCart' : 'dellCart', JSON.stringify(cartItems));
+=======
+  // Save to localStorage
+  localStorage.setItem('acerCart', JSON.stringify(cartItems));
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   
   // Update cart counter
   updateCartCounter();
@@ -219,8 +281,13 @@ function toggleWishlist(productId = null) {
     showNotification('Added to wishlist!', 'success');
   }
   
+<<<<<<< HEAD
   // Save to localStorage (brand-specific)
   localStorage.setItem(isApplePage ? 'appleWishlist' : isAcerPage ? 'acerWishlist' : isAsusPage ? 'asusWishlist' : 'dellWishlist', JSON.stringify(wishlistItems));
+=======
+  // Save to localStorage
+  localStorage.setItem('acerWishlist', JSON.stringify(wishlistItems));
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   
   // Update wishlist button
   updateWishlistButton(targetProductId);
@@ -253,10 +320,18 @@ function placeOrder() {
   const city = document.getElementById('checkoutCity').value.trim();
   const zip = document.getElementById('checkoutZip').value.trim();
   const paymentMethod = document.getElementById('checkoutPayment').value;
+<<<<<<< HEAD
   const termsAgreed = document.getElementById('termsAgreement').checked;
   
   // Validation
   if (!fullName || !email || !address || !city || !zip || !paymentMethod) {
+=======
+  const cardNumber = document.getElementById('checkoutCard').value.trim();
+  const termsAgreed = document.getElementById('termsAgreement').checked;
+  
+  // Validation
+  if (!fullName || !email || !address || !city || !zip || !paymentMethod || !cardNumber) {
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
     showNotification('Please fill in all required fields', 'error');
     return;
   }
@@ -266,6 +341,14 @@ function placeOrder() {
     return;
   }
   
+<<<<<<< HEAD
+=======
+  if (cardNumber.length < 16) {
+    showNotification('Please enter a valid card number', 'error');
+    return;
+  }
+  
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   // Get current product
   const productId = ModalManager.currentProductId;
   if (!productId || !productData[productId]) {
@@ -282,6 +365,7 @@ function placeOrder() {
   // Simulate order processing
   setTimeout(() => {
     // Create transaction record
+<<<<<<< HEAD
     const transaction = {
       id: 'LAPV-' + Date.now(),
       date: new Date().toLocaleString(),
@@ -300,6 +384,41 @@ function placeOrder() {
     let transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
     transactions.unshift(transaction);
     localStorage.setItem('salesTransactions', JSON.stringify(transactions));
+=======
+   const transaction = {
+  id: 'LAPV-' + Date.now(),
+  date: new Date().toLocaleString(), // readable format
+  customer: fullName,
+  email: email,
+  product: product.name,
+  quantity: quantity,
+  unitPrice: product.price.toFixed(2),
+  payment: paymentMethod,
+  delivery: `${address}, ${city}, ${zip}`,
+  total: (product.price * quantity * (1 + product.taxRate) + product.shipping * quantity).toFixed(2),
+  status: 'Completed'
+};
+
+    
+    // Save transaction to localStorage
+  let transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
+transactions.unshift(transaction); // latest first
+localStorage.setItem('salesTransactions', JSON.stringify(transactions));
+
+window.location.href = '/HTML/GLOBAL/SalesTransactions.html?newTransaction=1';
+
+
+document.addEventListener('click', function(event) {
+  const checkoutBtn = event.target.closest('.checkout-btn');
+  if (!checkoutBtn) return;
+
+  const productId = checkoutBtn.dataset.product;
+  openCheckoutModal(productId); // dynamic function handles modal update
+
+  event.preventDefault();
+});
+
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
     
     // Add to cart history
     addToCart(productId);
@@ -390,6 +509,19 @@ function setupEventListeners() {
     }
   });
   
+<<<<<<< HEAD
+=======
+  // Add to Cart Buttons
+  document.addEventListener('click', function(event) {
+    const addToCartBtn = event.target.closest('.add-to-cart-btn');
+    if (addToCartBtn) {
+      const productId = addToCartBtn.dataset.product;
+      addToCart(productId);
+      event.preventDefault();
+    }
+  });
+  
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   // Checkout/Buy Now Buttons
   document.addEventListener('click', function(event) {
     const checkoutBtn = event.target.closest('.checkout-btn');
@@ -464,9 +596,14 @@ function setupEventListeners() {
 }
 
 // Initialize Application
+<<<<<<< HEAD
 function initBrand() {
   const brandName = isApplePage ? 'Apple' : isAcerPage ? 'Acer' : isAsusPage ? 'Asus' : 'Dell';
   console.log(`🚀 Initializing ${brandName} Page...`);
+=======
+function initAcer() {
+  console.log('🚀 Initializing Acer Page...');
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
   
   // Setup event listeners
   setupEventListeners();
@@ -488,7 +625,11 @@ function initBrand() {
   window.toggleWishlist = toggleWishlist;
   window.placeOrder = placeOrder;
   
+<<<<<<< HEAD
   console.log(`✅ ${brandName} Page Initialized`);
+=======
+  console.log('✅ Acer Page Initialized');
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
 }
 
 // Auto-initialize when DOM is loaded
@@ -516,7 +657,11 @@ notificationStyles.textContent = `
     }
   }
   
+<<<<<<< HEAD
   . .modal-backdrop {
+=======
+  .modal-backdrop {
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
     animation: fadeIn 0.3s ease;
   }
   
@@ -525,4 +670,8 @@ notificationStyles.textContent = `
     to { opacity: 1; }
   }
 `;
+<<<<<<< HEAD
 document.head.appendChild(notificationStyles);
+=======
+document.head.appendChild(notificationStyles);
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330

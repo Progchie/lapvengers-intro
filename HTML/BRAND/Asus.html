@@ -3,15 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
   <link rel="stylesheet" href="/CSS/BRAND/Brand.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <title>Asus Laptops</title>
+=======
+  <link rel="stylesheet" href="/CSS/BRAND/Acer.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
 </head>
 
 <body>
 
   <!-- BIG GRAY BACKGROUND BOX -->
   <div class="background-box"></div>
+<<<<<<< HEAD
   <!-- PAGE CONTENT WRAPPER -->
   <div class="wrapper">
  <aside class="sidebar">
@@ -30,10 +36,31 @@
   </ul>
 </aside>
 
+=======
+
+  <!-- PAGE CONTENT WRAPPER -->
+ <div class="wrapper">
+    <aside class="sidebar">
+      <h3>BRANDS</h3>
+      <ul>
+        <li><a href="HTML/BRAND/Acer.html" class="active">ACER</a></li>
+        <li><a href="HTML/BRAND/Apple.html">APPLE</a></li>
+        <li><a href="HTML/BRAND/Asus.html">ASUS</a></li>
+        <li><a href="HTML/BRAND/Dell.html">DELL</a></li>
+        <li><a href="HTML/BRAND/Gigabyte.html">GIGABYTE</a></li>
+        <li><a href="HTML/BRAND/Hp.html">HP</a></li>
+        <li><a href="HTML/BRAND/Huawei.html">HUAWEI</a></li>
+        <li><a href="HTML/BRAND/Lenovo.html">LENOVO</a></li>
+        <li><a href="HTML/BRAND/Msi.html">MSI</a></li>
+        <li><a href="HTML/BRAND/Samsung.html">SAMSUNG</a></li>
+      </ul>
+    </aside>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
 
     <div class="main-banner-column">
       <!-- BANNER -->
       <section class="banner">
+<<<<<<< HEAD
         <img src="/IMAGES/Asus/AsusLogo.jpg" alt="Asus Banner">
       </section>
 
@@ -41,22 +68,42 @@
       <section class="category-cards">
         <div class="card">
           <h4>BEST GAMING LAPTOPS</h4>
+=======
+        <img src="/IMAGES/Acer/AcerLogo.jpg" alt="Banner">
+      </section>
+
+      
+
+      <!-- CATEGORY CARDS -->
+      <section class="category-cards">
+        <div class="card">
+          <h4>BEST LAPTOPS FOR GAMING</h4>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
           <a href="#">Shop now</a>
         </div>
 
         <div class="card">
+<<<<<<< HEAD
           <h4>BEST BUSINESS LAPTOPS</h4>
+=======
+          <h4>BEST LAPTOPS FOR STUDENT</h4>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
           <a href="#">Shop now</a>
         </div>
 
         <div class="card">
+<<<<<<< HEAD
           <h4>BEST BUDGET LAPTOPS</h4>
+=======
+          <h4>BEST BUDGET FOR LAPTOPS</h4>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
           <a href="#">Shop now</a>
         </div>
       </section>
 
       <!-- PRODUCTS -->
       <section class="products">
+<<<<<<< HEAD
         <h2>LAPTOPS</h2>
   
         <div class="product-grid">
@@ -106,6 +153,29 @@
             <button class="view-details-btn" data-product="asus3">
               View Details
             </button>
+=======
+        
+        <h2>LAPTOP</h2>
+  
+        <div class="product-grid">
+          <div class="product-card" onclick="openProductModal('acer1')">
+             <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Acer/ProductAcer1.png" alt="Acer Aspire 5">
+            <p>Acer Aspire 5</p>
+            <button></button>
+          </div>
+
+          <div class="product-card" onclick="openProductModal('acer2')">
+             <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Acer/ProductAcer2.png" alt="Acer OLED Swift">
+            <p>Acer OLED Swift</p>
+          </div>
+
+          <div class="product-card" onclick="openProductModal('acer3')">
+             <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Acer/ProductAcer3.png" alt="Acer Nitro Gaming">
+            <p>Acer Nitro Gaming</p>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
           </div>
         </div>
       </section>
@@ -115,6 +185,7 @@
   <!-- PRODUCT DETAILS MODAL -->
   <div id="productModal" class="modal">
     <div class="modal-content">
+<<<<<<< HEAD
       <span class="close-modal">&times;</span>
       
       <div class="product-details-container">
@@ -259,6 +330,29 @@
                 <i class="far fa-heart"></i>
               </button>
             </div>
+=======
+      <span class="close-btn" onclick="closeProductModal()">&times;</span>
+      <div class="product-details">
+        <div class="product-image">
+          <img id="modalProductImage" src="" alt="Product Image">
+        </div>
+        <div class="product-info">
+          <h2 id="modalProductName"></h2>
+          <div class="price" id="modalProductPrice"></div>
+          
+          <div class="specs">
+            <h3>Specifications</h3>
+            <ul id="modalProductSpecs"></ul>
+          </div>
+          
+          <div class="action-buttons">
+            <button class="btn btn-primary" onclick="openCheckoutModal()">
+              <i class="fas fa-shopping-cart"></i> Buy Now
+            </button>
+            <button class="btn btn-secondary">
+              <i class="fas fa-heart"></i> Add to Wishlist
+            </button>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
           </div>
         </div>
       </div>
@@ -268,6 +362,7 @@
   <!-- CHECKOUT MODAL -->
   <div id="checkoutModal" class="modal checkout-modal">
     <div class="modal-content checkout-content">
+<<<<<<< HEAD
       <span class="close-modal">&times;</span>
       
       <h2>Checkout</h2>
@@ -371,14 +466,91 @@
             <i class="fas fa-lock"></i> Place Order
           </button>
         </div>
+=======
+      <span class="close-btn" onclick="closeCheckoutModal()">&times;</span>
+      <h2>FILL OUT FORM</h2>
+      
+    
+      <div class="checkout-form">
+        <div class="form-group">
+          <label for="Fullname">Fullname</label>
+          <input type="text" id="Fullname" placeholder="Enter your Fullname">
+        </div>
+        
+      
+        
+        <div class="form-group full-width">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="Enter your address">
+        </div>
+        
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Enter your city">
+        </div>
+        
+        <div class="form-group">
+          <label for="zipCode">ZIP Code</label>
+          <input type="text" id="zipCode" placeholder="Enter ZIP code">
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="paymentMethod">Payment Method</label>
+          <select id="paymentMethod">
+            <option value="">Select payment method</option>
+            <option value="credit">Credit Card</option>
+            <option value="debit">Debit Card</option>
+            <option value="paypal">PayPal</option>
+          </select>
+        </div>
+        
+        <div class="form-group full-width">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" placeholder="Enter card number">
+        </div>
+        
+     
+      
+      <div class="order-summary">
+        <h3>Order Summary</h3>
+        <div class="order-item">
+          <span id="checkoutProductName"></span>
+          <span id="checkoutProductPrice"></span>
+        </div>
+        <div class="order-item">
+          <span>Shipping</span>
+          <span>$15.00</span>
+        </div>
+        <div class="order-item">
+          <span>Tax</span>
+          <span id="checkoutTax">$0.00</span>
+        </div>
+        <div class="order-total">
+          <span>Total</span>
+          <span id="checkoutTotal">$0.00</span>
+        </div>
+      </div>
+      
+      <div class="action-buttons" style="margin-top: 30px;">
+        <button class="btn btn-primary" onclick="placeOrder()">
+          <i class="fas fa-check"></i> Place Order
+        </button>
+        <button class="btn btn-secondary" onclick="closeCheckoutModal()">
+          Cancel
+        </button>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
       </div>
     </div>
   </div>
 
+<<<<<<< HEAD
   <!-- CART COUNTER -->
   <div class="cart-counter" id="cartCounter" style="display: none;">0</div>
 
   <script src="/JAVASCRIPT/BRAND/Brand.js"></script>
   
+=======
+  <script src="/JAVASCRIPT/BRAND/Acer.js"></script>
+>>>>>>> 15f8f335f8ae171594f00c8f52741a24d99e0330
 </body>
 </html>
