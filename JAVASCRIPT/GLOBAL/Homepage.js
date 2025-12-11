@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --------------------------
-// LAPVENGERS Website Functionality - Dynamic Module Pattern
+// LAPVENGERS Website Functionality - Dynamic  Pattern
 // --------------------------
 const LAPVENGERS = (function() {
     // Private Variables

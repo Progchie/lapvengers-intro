@@ -19,14 +19,13 @@ function initHeaderNavigation() {
             e.preventDefault();
             const pageName = this.textContent.trim();
             const route = navLinks[pageName];
-            
             if (route) {
                 window.location.href = route;
             }
         });
     });
 
-    // Mobile menu toggle
+
     const menuBtn = document.getElementById('menuBtn');
     const navBar = document.querySelector('.nav-bar');
     

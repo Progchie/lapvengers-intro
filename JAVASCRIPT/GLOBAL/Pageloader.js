@@ -1,222 +1,461 @@
-// Product data
-const products = {
+// UNIVERSAL PRODUCT DATABASE FOR ALL BRANDS
+const universalProducts = {
+  // ACER PRODUCTS
   acer1: {
+    brand: "acer",
     name: "Acer Aspire 5",
-    price: "$699.99",
+    price: 699.99,
+    originalPrice: 799.99,
+    shipping: 15.00,
+    taxRate: 0.10,
     image: "/IMAGES/Acer/ProductAcer1.png",
+    badge: "BEST SELLER",
+    rating: 4.5,
+    reviews: 128,
     specs: [
       { name: "Processor", value: "Intel Core i5-1135G7" },
       { name: "RAM", value: "8GB DDR4" },
       { name: "Storage", value: "512GB SSD" },
-      { name: "Display", value: "15.6\" Full HD IPS" },
+      { name: "Display", value: '15.6" Full HD IPS' },
       { name: "Graphics", value: "Intel Iris Xe Graphics" },
       { name: "Battery", value: "Up to 8 hours" },
       { name: "Weight", value: "1.65 kg" }
-    ]
+    ],
+    features: ["Thin & Light", "Backlit Keyboard", "Fingerprint Reader", "Wi-Fi 6"]
   },
   acer2: {
+    brand: "acer",
     name: "Acer OLED Swift",
-    price: "$1,299.99",
-    image: "https://placehold.co/500x400/42627B/FFFFFF?text=Acer+OLED+Swift",
+    price: 1299.99,
+    originalPrice: 1499.99,
+    shipping: 20.00,
+    taxRate: 0.10,
+    image: "/IMAGES/Acer/ProductAcer2.png",
+    badge: "PREMIUM",
+    rating: 4.8,
+    reviews: 64,
     specs: [
       { name: "Processor", value: "Intel Core i7-1165G7" },
       { name: "RAM", value: "16GB LPDDR4X" },
       { name: "Storage", value: "1TB NVMe SSD" },
-      { name: "Display", value: "14\" 2.8K OLED" },
+      { name: "Display", value: '14" 2.8K OLED' },
       { name: "Graphics", value: "Intel Iris Xe Graphics" },
       { name: "Battery", value: "Up to 10 hours" },
       { name: "Weight", value: "1.2 kg" }
-    ]
+    ],
+    features: ["OLED Display", "Military Grade Durability", "Thunderbolt 4", "AI Noise Cancellation"]
   },
   acer3: {
+    brand: "acer",
     name: "Acer Nitro Gaming",
-    price: "$1,199.99",
-    image: "https://placehold.co/500x400/42627B/FFFFFF?text=Acer+Nitro+Gaming",
+    price: 1199.99,
+    originalPrice: 1399.99,
+    shipping: 25.00,
+    taxRate: 0.10,
+    image: "/IMAGES/Acer/ProductAcer3.png",
+    badge: "GAMING",
+    rating: 4.6,
+    reviews: 89,
     specs: [
       { name: "Processor", value: "AMD Ryzen 7 5800H" },
       { name: "RAM", value: "16GB DDR4" },
       { name: "Storage", value: "1TB SSD + 1TB HDD" },
-      { name: "Display", value: "15.6\" Full HD 144Hz" },
+      { name: "Display", value: '15.6" Full HD 144Hz' },
       { name: "Graphics", value: "NVIDIA GeForce RTX 3060" },
       { name: "Battery", value: "Up to 6 hours" },
       { name: "Weight", value: "2.4 kg" }
-    ]
+    ],
+    features: ["RGB Keyboard", "CoolBoost Technology", "4-Zone RGB", "NitroSense"]
+  },
+  
+  // APPLE PRODUCTS
+ 
+  
+  
+  
+  // ADD MORE BRANDS HERE...
+};
+
+// Universal Cart and Wishlist
+let universalCart = JSON.parse(localStorage.getItem('universalCart')) || [];
+let universalWishlist = JSON.parse(localStorage.getItem('universalWishlist')) || [];
+let currentProduct = null;
+let currentBrand = null;
+
+// Universal Modal Manager
+const UniversalModalManager = {
+  openModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      this.addBackdrop();
+    }
+  },
+  
+  closeModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      this.removeBackdrop();
+    }
+  },
+  
+  closeAllModals() {
+    document.querySelectorAll('.modal').forEach(modal => {
+      modal.style.display = 'none';
+    });
+    document.body.style.overflow = 'auto';
+    this.removeBackdrop();
+  },
+  
+  addBackdrop() {
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop';
+    backdrop.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    `;
+    backdrop.onclick = () => this.closeAllModals();
+    document.body.appendChild(backdrop);
+  },
+  
+  removeBackdrop() {
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) backdrop.remove();
   }
 };
 
-// Current selected product
-let currentProduct = null;
+// Universal Product Modal
+function openUniversalProductModal(productId) {
+  const product = universalProducts[productId];
+  if (!product) {
+    console.error(`Product ${productId} not found`);
+    return;
+  }
+  
+  currentProduct = product;
+  currentBrand = product.brand;
+  
+  // Update modal with product data
+  updateUniversalProductModal(product);
+  
+  UniversalModalManager.openModal('universalProductModal');
+}
 
-// Open product details modal
-function openProductModal(productId) {
-  currentProduct = products[productId];
+function updateUniversalProductModal(product) {
+  // Update basic info
+  document.getElementById('modalProductName').textContent = product.name;
+  document.getElementById('modalProductPrice').textContent = `$${product.price.toFixed(2)}`;
+  document.getElementById('modalProductImage').src = product.image;
   
-  document.getElementById('modalProductName').textContent = currentProduct.name;
-  document.getElementById('modalProductPrice').textContent = currentProduct.price;
-  document.getElementById('modalProductImage').src = currentProduct.image;
+  // Update badge
+  const badgeElement = document.getElementById('modalProductBadge');
+  if (badgeElement) {
+    badgeElement.textContent = product.badge;
+    badgeElement.className = `badge ${product.badge.toLowerCase().replace(' ', '-')}`;
+  }
   
+  // Update rating
+  const ratingElement = document.getElementById('modalProductRating');
+  if (ratingElement) {
+    ratingElement.innerHTML = `⭐ ${product.rating} (${product.reviews} reviews)`;
+  }
+  
+  // Update specs
   const specsList = document.getElementById('modalProductSpecs');
-  specsList.innerHTML = '';
+  if (specsList) {
+    specsList.innerHTML = '';
+    product.specs.forEach(spec => {
+      const li = document.createElement('li');
+      li.className = 'spec-item';
+      li.innerHTML = `
+        <span class="spec-name">${spec.name}:</span>
+        <span class="spec-value">${spec.value}</span>
+      `;
+      specsList.appendChild(li);
+    });
+  }
   
-  currentProduct.specs.forEach(spec => {
-    const li = document.createElement('li');
-    li.innerHTML = `<span class="spec-name">${spec.name}:</span><span class="spec-value">${spec.value}</span>`;
-    specsList.appendChild(li);
-  });
+  // Update features
+  const featuresContainer = document.getElementById('modalProductFeatures');
+  if (featuresContainer) {
+    featuresContainer.innerHTML = '';
+    product.features.forEach(feature => {
+      const span = document.createElement('span');
+      span.className = 'feature-tag';
+      span.textContent = feature;
+      featuresContainer.appendChild(span);
+    });
+  }
   
-  document.getElementById('productModal').style.display = 'block';
+  // Update buttons with correct product ID
+  const addToCartBtn = document.querySelector('#universalProductModal .add-to-cart-btn');
+  const checkoutBtn = document.querySelector('#universalProductModal .checkout-btn');
+  const wishlistBtn = document.querySelector('#universalProductModal .wishlist-btn');
+  
+  if (addToCartBtn) addToCartBtn.dataset.product = Object.keys(universalProducts).find(key => universalProducts[key] === product);
+  if (checkoutBtn) checkoutBtn.dataset.product = Object.keys(universalProducts).find(key => universalProducts[key] === product);
+  if (wishlistBtn) wishlistBtn.dataset.product = Object.keys(universalProducts).find(key => universalProducts[key] === product);
 }
 
-// Close product details modal
-function closeProductModal() {
-  document.getElementById('productModal').style.display = 'none';
-}
-
-// Open checkout modal
-function openCheckoutModal() {
-  if (!currentProduct) return;
+// Universal Checkout Modal
+function openUniversalCheckoutModal(productId = null) {
+  const targetProduct = productId ? universalProducts[productId] : currentProduct;
+  if (!targetProduct) return;
   
-  document.getElementById('checkoutProductName').textContent = currentProduct.name;
-  document.getElementById('checkoutProductPrice').textContent = currentProduct.price;
+  document.getElementById('checkoutProductName').textContent = targetProduct.name;
+  document.getElementById('checkoutProductPrice').textContent = `$${targetProduct.price.toFixed(2)}`;
   
-  // Calculate tax and total
-  const price = parseFloat(currentProduct.price.replace('$', ''));
-  const tax = price * 0.1; // 10% tax
-  const total = price + tax + 15; // price + tax + shipping
+  // Calculate totals
+  const quantity = parseInt(document.getElementById('checkoutQuantity')?.value || 1);
+  const subtotal = targetProduct.price * quantity;
+  const tax = subtotal * targetProduct.taxRate;
+  const shipping = targetProduct.shipping * quantity;
+  const total = subtotal + tax + shipping;
   
+  document.getElementById('checkoutSubtotal').textContent = `$${subtotal.toFixed(2)}`;
   document.getElementById('checkoutTax').textContent = `$${tax.toFixed(2)}`;
+  document.getElementById('checkoutShipping').textContent = `$${shipping.toFixed(2)}`;
   document.getElementById('checkoutTotal').textContent = `$${total.toFixed(2)}`;
   
-  document.getElementById('productModal').style.display = 'none';
-  document.getElementById('checkoutModal').style.display = 'block';
+  UniversalModalManager.closeModal('universalProductModal');
+  UniversalModalManager.openModal('checkoutModal');
 }
 
-// Close checkout modal
-function closeCheckoutModal() {
-  document.getElementById('checkoutModal').style.display = 'none';
+// Universal Cart Functions
+function addToUniversalCart(productId = null) {
+  const targetProduct = productId ? universalProducts[productId] : currentProduct;
+  if (!targetProduct) return;
+  
+  const productKey = Object.keys(universalProducts).find(key => universalProducts[key] === targetProduct);
+  
+  const existingItem = universalCart.find(item => item.id === productKey);
+  
+  if (existingItem) {
+    existingItem.quantity += 1;
+  } else {
+    universalCart.push({
+      id: productKey,
+      brand: targetProduct.brand,
+      name: targetProduct.name,
+      price: targetProduct.price,
+      image: targetProduct.image,
+      quantity: 1
+    });
+  }
+  
+  localStorage.setItem('universalCart', JSON.stringify(universalCart));
+  updateUniversalCartCounter();
+  showUniversalNotification(`${targetProduct.name} added to cart!`, 'success');
 }
 
-// Place order
-function placeOrder() {
-  alert('Thank you for your order! Your laptop will be shipped soon.');
-  closeCheckoutModal();
+// Universal Wishlist Functions
+function toggleUniversalWishlist(productId = null) {
+  const targetProduct = productId ? universalProducts[productId] : currentProduct;
+  if (!targetProduct) return;
+  
+  const productKey = Object.keys(universalProducts).find(key => universalProducts[key] === targetProduct);
+  const index = universalWishlist.indexOf(productKey);
+  
+  if (index > -1) {
+    universalWishlist.splice(index, 1);
+    showUniversalNotification('Removed from wishlist', 'info');
+  } else {
+    universalWishlist.push(productKey);
+    showUniversalNotification('Added to wishlist!', 'success');
+  }
+  
+  localStorage.setItem('universalWishlist', JSON.stringify(universalWishlist));
 }
 
-// Event Delegation for dynamic content
-function setupEventListeners() {
-  console.log('🔄 Setting up Acer event listeners...');
-  
-  // Use event delegation for product buttons
-  document.addEventListener('click', function(event) {
-    // Product detail buttons
-    if (event.target.classList.contains('view-details-btn') || 
-        event.target.closest('.view-details-btn')) {
-      const productId = event.target.dataset.product || 
-                       event.target.closest('[data-product]')?.dataset.product;
-      if (productId && products[productId]) {
-        openProductModal(productId);
-      }
-    }
-    
-    // Close modal buttons
-    if (event.target.classList.contains('close-modal') || 
-        event.target.closest('.close-modal')) {
-      closeProductModal();
-    }
-    
-    if (event.target.classList.contains('close-checkout') || 
-        event.target.closest('.close-checkout')) {
-      closeCheckoutModal();
-    }
-    
-    // Checkout buttons
-    if (event.target.classList.contains('checkout-btn') || 
-        event.target.closest('.checkout-btn')) {
-      openCheckoutModal();
-    }
-    
-    // Place order buttons
-    if (event.target.classList.contains('place-order-btn') || 
-        event.target.closest('.place-order-btn')) {
-      placeOrder();
-    }
-  });
-  
-  // Close modals when clicking outside
-  document.addEventListener('click', function(event) {
-    const productModal = document.getElementById('productModal');
-    const checkoutModal = document.getElementById('checkoutModal');
-    
-    if (event.target === productModal) {
-      closeProductModal();
-    }
-    
-    if (event.target === checkoutModal) {
-      closeCheckoutModal();
-    }
-  });
-  
-  // Dropdown menus with event delegation
-  document.addEventListener('mouseover', function(event) {
-    if (event.target.classList.contains('dropdown') || 
-        event.target.closest('.dropdown')) {
-      const dropdown = event.target.closest('.dropdown');
-      const content = dropdown?.querySelector('.dropdown-content');
-      if (content) content.style.display = 'block';
-    }
-  });
-  
-  document.addEventListener('mouseout', function(event) {
-    if (event.target.classList.contains('dropdown') || 
-        event.target.closest('.dropdown')) {
-      const dropdown = event.target.closest('.dropdown');
-      const content = dropdown?.querySelector('.dropdown-content');
-      if (content) content.style.display = 'none';
-    }
-  });
-}
-
-// Initialize Acer functionality
-function initAcer() {
-  console.log('🚀 Initializing Acer page...');
-  setupEventListeners();
-  
-  // Make functions globally available
-  window.openProductModal = openProductModal;
-  window.closeProductModal = closeProductModal;
-  window.openCheckoutModal = openCheckoutModal;
-  window.closeCheckoutModal = closeCheckoutModal;
-  window.placeOrder = placeOrder;
-  
-  console.log('✅ Acer page initialized successfully');
-}
-
-// Auto-initialize when Acer content is detected
-function checkAndInitAcer() {
-  const contentContainer = document.getElementById('content-container');
-  if (contentContainer && contentContainer.innerHTML.includes('acer')) {
-    setTimeout(initAcer, 100);
+// Universal Cart Counter
+function updateUniversalCartCounter() {
+  const cartCounter = document.getElementById('universalCartCounter');
+  if (cartCounter) {
+    const totalItems = universalCart.reduce((sum, item) => sum + item.quantity, 0);
+    cartCounter.textContent = totalItems;
+    cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
   }
 }
 
-// Check when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', checkAndInitAcer);
-} else {
-  checkAndInitAcer();
+// Universal Notification System
+function showUniversalNotification(message, type = 'success') {
+  const notification = document.createElement('div');
+  notification.className = `universal-notification ${type}`;
+  notification.style.cssText = `
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db'};
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    z-index: 10000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    font-weight: 500;
+  `;
+  notification.textContent = message;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => notification.style.transform = 'translateX(0)', 10);
+  setTimeout(() => {
+    notification.style.transform = 'translateX(400px)';
+    setTimeout(() => notification.remove(), 300);
+  }, 3000);
 }
 
-// Also check when content is dynamically loaded
-const observer = new MutationObserver(function(mutations) {
-  mutations.forEach(function(mutation) {
-    if (mutation.type === 'childList') {
-      checkAndInitAcer();
+// Universal Order Placement
+function placeUniversalOrder() {
+  const email = document.getElementById('checkoutEmail')?.value;
+  const address = document.getElementById('checkoutAddress')?.value;
+  
+  if (!email || !address) {
+    showUniversalNotification('Please fill in all required fields', 'error');
+    return;
+  }
+  
+  showUniversalNotification('Processing your order...', 'info');
+  
+  setTimeout(() => {
+    const quantity = parseInt(document.getElementById('checkoutQuantity')?.value || 1);
+    const total = currentProduct.price * quantity * (1 + currentProduct.taxRate) + (currentProduct.shipping * quantity);
+    
+    // Save transaction
+    const transaction = {
+      id: 'TRX-' + Date.now(),
+      date: new Date().toLocaleString(),
+      customer: email.split('@')[0],
+      product: currentProduct.name,
+      brand: currentProduct.brand,
+      quantity: quantity,
+      total: `$${total.toFixed(2)}`,
+      status: 'Completed'
+    };
+    
+    let transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
+    transactions.unshift(transaction);
+    localStorage.setItem('salesTransactions', JSON.stringify(transactions));
+    
+    // Clear form
+    const form = document.getElementById('checkoutForm');
+    if (form) form.reset();
+    
+    UniversalModalManager.closeAllModals();
+    
+    showUniversalNotification('✅ Order completed!', 'success');
+    
+    // Optional: Redirect to transactions page
+    // setTimeout(() => window.location.href = 'transaction.html', 1500);
+    
+  }, 1500);
+}
+
+// Universal Event Listeners
+function setupUniversalEventListeners() {
+  document.addEventListener('click', function(event) {
+    try {
+      // View details buttons (with data-product attribute)
+      if (event.target.closest('[data-product]')) {
+        const btn = event.target.closest('[data-product]');
+        const productId = btn.dataset.product;
+        if (universalProducts[productId]) {
+          openUniversalProductModal(productId);
+        }
+      }
+      
+      // Add to cart buttons
+      if (event.target.closest('.add-to-cart-btn')) {
+        const btn = event.target.closest('.add-to-cart-btn');
+        const productId = btn.dataset.product;
+        addToUniversalCart(productId);
+      }
+      
+      // Checkout buttons
+      if (event.target.closest('.checkout-btn')) {
+        const btn = event.target.closest('.checkout-btn');
+        const productId = btn.dataset.product;
+        openUniversalCheckoutModal(productId);
+      }
+      
+      // Wishlist buttons
+      if (event.target.closest('.wishlist-btn')) {
+        const btn = event.target.closest('.wishlist-btn');
+        const productId = btn.dataset.product;
+        toggleUniversalWishlist(productId);
+      }
+      
+      // Close buttons
+      if (event.target.closest('.close-modal')) {
+        UniversalModalManager.closeAllModals();
+      }
+      
+      // Place order button
+      if (event.target.closest('.place-order-btn')) {
+        placeUniversalOrder();
+      }
+      
+    } catch (error) {
+      console.error('Event handler error:', error);
     }
   });
-});
+  
+  // Keyboard support
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      UniversalModalManager.closeAllModals();
+    }
+  });
+  
+  // Quantity changes
+  document.addEventListener('input', function(event) {
+    if (event.target.id === 'checkoutQuantity' && currentProduct) {
+      openUniversalCheckoutModal();
+    }
+  });
+}
 
-// Start observing
-const contentContainer = document.getElementById('content-container');
-if (contentContainer) {
-  observer.observe(contentContainer, { childList: true, subtree: true });
+// Initialize Universal System
+function initUniversalBrandSystem() {
+  console.log('🚀 Initializing Universal Brand System...');
+  
+  setupUniversalEventListeners();
+  updateUniversalCartCounter();
+  
+  // Make functions globally available
+  window.openUniversalProductModal = openUniversalProductModal;
+  window.addToUniversalCart = addToUniversalCart;
+  window.openUniversalCheckoutModal = openUniversalCheckoutModal;
+  window.placeUniversalOrder = placeUniversalOrder;
+  
+  console.log('✅ Universal Brand System Initialized');
+  
+  // Auto-attach to existing product cards
+  setTimeout(() => {
+    document.querySelectorAll('[data-product]').forEach(btn => {
+      const productId = btn.dataset.product;
+      if (universalProducts[productId]) {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          openUniversalProductModal(productId);
+        };
+      }
+    });
+  }, 500);
+}
+
+// Auto-initialize
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initUniversalBrandSystem);
+} else {
+  initUniversalBrandSystem();
 }

@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => console.error('Footer loading error:', error));
 
     // Load Contact Content (Yung separated Contact.html file)
-    fetch('/HTML/TEMPLATE/Contact.html')  // ITO YUNG SEPARATED FILE
+    fetch('/HTML/TEMPLATE/Contact.html')  
         .then(response => {
             if (!response.ok) throw new Error('Contact content not found');
             return response.text();

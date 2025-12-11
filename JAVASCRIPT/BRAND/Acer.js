@@ -1,235 +1,362 @@
-// Enhanced Product data with more details
-const products = {
-  acer1: {
-    id: "acer1",
-    name: "Acer Aspire 5",
-    price: "$699.99",
-    originalPrice: "$799.99",
-    image: "IMAGES/Acer/ProductAcer1.png",
-    badge: "BEST SELLER",
-    rating: 4.5,
-    reviews: 128,
-    specs: [
-      { name: "Processor", value: "Intel Core i5-1135G7" },
-      { name: "RAM", value: "8GB DDR4" },
-      { name: "Storage", value: "512GB SSD" },
-      { name: "Display", value: '15.6" Full HD IPS' },
-      { name: "Graphics", value: "Intel Iris Xe Graphics" },
-      { name: "Battery", value: "Up to 8 hours" },
-      { name: "Weight", value: "1.65 kg" }
-    ],
-    features: ["Thin & Light", "Backlit Keyboard", "Fingerprint Reader", "Wi-Fi 6"]
-  },
-  acer2: {
-    id: "acer2",
-    name: "Acer OLED Swift",
-    price: "$1,299.99",
-    originalPrice: "$1,499.99",
-    image: "/IMAGES/Acer/ProductAcer2.png",
-    badge: "PREMIUM",
-    rating: 4.8,
-    reviews: 64,
-    specs: [
-      { name: "Processor", value: "Intel Core i7-1165G7" },
-      { name: "RAM", value: "16GB LPDDR4X" },
-      { name: "Storage", value: "1TB NVMe SSD" },
-      { name: "Display", value: '14" 2.8K OLED' },
-      { name: "Graphics", value: "Intel Iris Xe Graphics" },
-      { name: "Battery", value: "Up to 10 hours" },
-      { name: "Weight", value: "1.2 kg" }
-    ],
-    features: ["OLED Display", "Military Grade Durability", "Thunderbolt 4", "AI Noise Cancellation"]
-  },
-  acer3: {
-    id: "acer3",
-    name: "Acer Nitro Gaming",
-    price: "$1,199.99",
-    originalPrice: "$1,399.99",
-    image: "/IMAGES/Acer/ProductAcer3.png",
-    badge: "GAMING",
-    rating: 4.6,
-    reviews: 89,
-    specs: [
-      { name: "Processor", value: "AMD Ryzen 7 5800H" },
-      { name: "RAM", value: "16GB DDR4", icon: "💾" },
-      { name: "Storage", value: "1TB SSD + 1TB HDD" },
-      { name: "Display", value: '15.6" Full HD 144Hz' },
-      { name: "Graphics", value: "NVIDIA GeForce RTX 3060" },
-      { name: "Battery", value: "Up to 6 hours" },
-      { name: "Weight", value: "2.4 kg" }
-    ],
-    features: ["RGB Keyboard", "CoolBoost Technology", "4-Zone RGB", "NitroSense"]
-  }
+// Brand.js - Universal JavaScript for Brand Pages (Acer, Apple, Asus, Dell)
+
+// Detect brand from page title or URL
+const pageTitle = document.title.toLowerCase();
+const isApplePage = pageTitle.includes('apple');
+const isAcerPage = pageTitle.includes('acer');
+const isAsusPage = pageTitle.includes('asus');
+const isDellPage = pageTitle.includes('dell');
+const isGigabytePage = pageTitle.includes('gigabyte');
+
+// Cart and Wishlist data (brand-specific)
+let cartItems = JSON.parse(localStorage.getItem(isApplePage ? 'appleCart' : isAcerPage ? 'acerCart' : isAsusPage ? 'asusCart' : 'dellCart')) || [];
+let wishlistItems = JSON.parse(localStorage.getItem(isApplePage ? 'appleWishlist' : isAcerPage ? 'acerWishlist' : isAsusPage ? 'asusWishlist' : 'dellWishlist')) || [];
+
+// Product data for dynamic updates (prices in PHP)
+const productData = {
+  // Acer products
+  acer1: { name: "Acer Aspire 5", price: 40000, originalPrice: 45000, shipping: 15.00, taxRate: 0.10 },
+  acer2: { name: "Acer OLED Swift", price: 34000, originalPrice: 40000, shipping: 15.00, taxRate: 0.10 },
+  acer3: { name: "Acer Nitro Gaming", price: 50999, originalPrice: 55000, shipping: 15.00, taxRate: 0.10 },
+  
+  // Apple products
+  apple1: { name: "MacBook Air", price: 55944, originalPrice: 62160, shipping: 15.00, taxRate: 0.10 },
+  apple2: { name: "MacBook Pro 13\"", price: 72744, originalPrice: 80832, shipping: 15.00, taxRate: 0.10 },
+  apple3: { name: "MacBook Pro 16\"", price: 139944, originalPrice: 155493, shipping: 15.00, taxRate: 0.10 },
+
+  // Asus products
+  asus1: { name: "Asus ROG Strix", price: 85000, originalPrice: 95000, shipping: 15.00, taxRate: 0.10 },
+  asus2: { name: "Asus ZenBook Pro", price: 120000, originalPrice: 135000, shipping: 15.00, taxRate: 0.10 },
+  asus3: { name: "Asus VivoBook", price: 35000, originalPrice: 40000, shipping: 15.00, taxRate: 0.10 },
+
+  // Dell products
+  dell1: { name: "Dell XPS 13", price: 85000, originalPrice: 95000, shipping: 15.00, taxRate: 0.10 },
+  dell2: { name: "Dell Inspiron 15", price: 45000, originalPrice: 50000, shipping: 15.00, taxRate: 0.10 },
+  dell3: { name: "Dell Alienware m15", price: 150000, originalPrice: 165000, shipping: 15.00, taxRate: 0.10 },
+
+gigabyte1: { name: "Gigabyte Aero 15", price: 85000, originalPrice: 95000, shipping: 15.00, taxRate: 0.10 },
+gigabyte2: { name: "Gigabyte Aorus 17", price: 150000, originalPrice: 165000, shipping: 15.00, taxRate: 0.10 },
+gigabyte3: { name: "Gigabyte Aero 14", price: 65000, originalPrice: 70000, shipping: 15.00, taxRate: 0.10 }
 };
 
-// Current selected product and state
-let currentProduct = null;
-let cartItems = JSON.parse(localStorage.getItem('acerCart')) || [];
-
-// Enhanced modal management
+// Modal Manager
 const ModalManager = {
+  currentProductId: null,
+  
   openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-    document.body.style.overflow = 'hidden';
-    this.addBackdrop();
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+      this.addBackdrop();
+    }
   },
-
+  
   closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-    document.body.style.overflow = 'auto';
-    this.removeBackdrop();
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+      this.removeBackdrop();
+    }
   },
-
-  addBackdrop() {
-    const backdrop = document.createElement('div');
-    backdrop.className = 'modal-backdrop';
-    backdrop.style.cssText = `
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      z-index: 999;
-    `;
-    backdrop.onclick = () => this.closeAllModals();
-    document.body.appendChild(backdrop);
-  },
-
-  removeBackdrop() {
-    const backdrop = document.querySelector('.modal-backdrop');
-    if (backdrop) backdrop.remove();
-  },
-
+  
   closeAllModals() {
     document.querySelectorAll('.modal').forEach(modal => {
       modal.style.display = 'none';
     });
-    this.removeBackdrop();
     document.body.style.overflow = 'auto';
+    this.removeBackdrop();
+    this.currentProductId = null;
+  },
+  
+  addBackdrop() {
+    let backdrop = document.querySelector('.modal-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'modal-backdrop';
+      backdrop.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: 999;
+      `;
+      backdrop.onclick = () => this.closeAllModals();
+      document.body.appendChild(backdrop);
+    }
+  },
+  
+  removeBackdrop() {
+    const backdrop = document.querySelector('.modal-backdrop');
+    if (backdrop) {
+      backdrop.remove();
+    }
   }
 };
 
-// Enhanced product modal with image gallery
+// Product Modal Functions
 function openProductModal(productId) {
-  currentProduct = products[productId];
-  if (!currentProduct) return;
-
-  const modal = document.getElementById('productModal');
+  // Hide all product modals first
+  document.querySelectorAll('.product-modal').forEach(modal => {
+    modal.style.display = 'none';
+  });
   
-  // Update modal content
-  document.getElementById('modalProductName').textContent = currentProduct.name;
-  document.getElementById('modalProductPrice').textContent = currentProduct.price;
-  
-  if (currentProduct.originalPrice) {
-    document.getElementById('modalOriginalPrice').textContent = currentProduct.originalPrice;
-    document.getElementById('modalOriginalPrice').style.display = 'inline';
+  // Show the selected product modal
+  const selectedModal = document.getElementById(`${productId}-modal`);
+  if (selectedModal) {
+    selectedModal.style.display = 'flex';
+    ModalManager.currentProductId = productId;
+    ModalManager.openModal('productModal');
+    updateWishlistButton(productId);
   }
-  
-  document.getElementById('modalProductImage').src = currentProduct.image;
-  document.getElementById('modalProductBadge').textContent = currentProduct.badge;
-  
-  // Update rating
-  const ratingElement = document.getElementById('modalProductRating');
-  ratingElement.innerHTML = `⭐ ${currentProduct.rating} (${currentProduct.reviews} reviews)`;
-  
-  // Update specs with icons
-  const specsList = document.getElementById('modalProductSpecs');
-  specsList.innerHTML = '';
-  
-  currentProduct.specs.forEach(spec => {
-    const li = document.createElement('li');
-    li.className = 'spec-item';
-    li.innerHTML = `
-      <span class="spec-icon">${spec.icon || '📊'}</span>
-      <span class="spec-name">${spec.name}:</span>
-      <span class="spec-value">${spec.value}</span>
-    `;
-    specsList.appendChild(li);
-  });
-  
-  // Update features
-  const featuresContainer = document.getElementById('modalProductFeatures');
-  featuresContainer.innerHTML = '';
-  
-  currentProduct.features.forEach(feature => {
-    const span = document.createElement('span');
-    span.className = 'feature-tag';
-    span.textContent = feature;
-    featuresContainer.appendChild(span);
-  });
-  
-  ModalManager.openModal('productModal');
 }
 
-// Enhanced checkout with quantity
-function openCheckoutModal() {
-  if (!currentProduct) return;
-  
-  document.getElementById('checkoutProductName').textContent = currentProduct.name;
-  document.getElementById('checkoutProductPrice').textContent = currentProduct.price;
-  
-  // Calculate totals
-  const price = parseFloat(currentProduct.price.replace('$', ''));
-  const quantity = parseInt(document.getElementById('checkoutQuantity')?.value || 1);
-  const subtotal = price * quantity;
-  const tax = subtotal * 0.1;
-  const shipping = quantity * 15;
-  const total = subtotal + tax + shipping;
-  
-  document.getElementById('checkoutSubtotal').textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById('checkoutTax').textContent = `$${tax.toFixed(2)}`;
-  document.getElementById('checkoutShipping').textContent = `$${shipping.toFixed(2)}`;
-  document.getElementById('checkoutTotal').textContent = `$${total.toFixed(2)}`;
-  
+function closeProductModal() {
   ModalManager.closeModal('productModal');
+}
+
+// Checkout Functions
+function openCheckoutModal(productId = null) {
+  // Use current product ID or provided one
+  const targetProductId = productId || ModalManager.currentProductId;
+  
+  if (!targetProductId || !productData[targetProductId]) {
+    console.error('Product not found');
+    return;
+  }
+  
+  const product = productData[targetProductId];
+  
+  // Update checkout summary
+  document.getElementById('checkoutProductName').textContent = product.name;
+  document.getElementById('checkoutProductPrice').textContent = `₱${product.price.toLocaleString()}`;
+  
+  // Calculate and update totals
+  calculateAndUpdateTotals(product);
+  
+  // Close product modal if open
+  ModalManager.closeModal('productModal');
+  
+  // Open checkout modal
   ModalManager.openModal('checkoutModal');
 }
 
-// Enhanced cart functionality
-function addToCart() {
-  if (!currentProduct) return;
+function calculateAndUpdateTotals(product) {
+  const quantity = parseInt(document.getElementById('checkoutQuantity').value) || 1;
+  const subtotal = product.price * quantity;
+  const tax = subtotal * product.taxRate;
+  const shipping = product.shipping * quantity;
+  const total = subtotal + tax + shipping;
   
-  const existingItem = cartItems.find(item => item.id === currentProduct.id);
+  document.getElementById('checkoutSubtotal').textContent = `₱${subtotal.toLocaleString()}`;
+  document.getElementById('checkoutTax').textContent = `₱${tax.toFixed(2)}`;
+  document.getElementById('checkoutShipping').textContent = `₱${shipping.toFixed(2)}`;
+  document.getElementById('checkoutTotal').textContent = `₱${total.toFixed(2)}`;
+}
+
+function closeCheckoutModal() {
+  ModalManager.closeModal('checkoutModal');
+}
+
+// Cart Functions
+function addToCart(productId = null) {
+  const targetProductId = productId || ModalManager.currentProductId;
   
-  if (existingItem) {
-    existingItem.quantity += 1;
+  if (!targetProductId || !productData[targetProductId]) {
+    console.error('Product not found');
+    return;
+  }
+  
+  const product = productData[targetProductId];
+  
+  // Check if product already in cart
+  const existingItemIndex = cartItems.findIndex(item => item.id === targetProductId);
+  
+  if (existingItemIndex > -1) {
+    // Update quantity
+    cartItems[existingItemIndex].quantity += 1;
   } else {
+    // Add new item
     cartItems.push({
-      ...currentProduct,
+      id: targetProductId,
+      name: product.name,
+      price: product.price,
       quantity: 1
     });
   }
   
-  localStorage.setItem('acerCart', JSON.stringify(cartItems));
+  // Save to localStorage (brand-specific)
+  localStorage.setItem(isApplePage ? 'appleCart' : isAcerPage ? 'acerCart' : isAsusPage ? 'asusCart' : 'dellCart', JSON.stringify(cartItems));
+  
+  // Update cart counter
   updateCartCounter();
-  showNotification(`${currentProduct.name} added to cart!`);
+  
+  // Show notification
+  showNotification(`${product.name} added to cart!`, 'success');
 }
 
+// Wishlist Functions
+function toggleWishlist(productId = null) {
+  const targetProductId = productId || ModalManager.currentProductId;
+  
+  if (!targetProductId) {
+    console.error('Product not found');
+    return;
+  }
+  
+  const index = wishlistItems.indexOf(targetProductId);
+  
+  if (index > -1) {
+    // Remove from wishlist
+    wishlistItems.splice(index, 1);
+    showNotification('Removed from wishlist', 'info');
+  } else {
+    // Add to wishlist
+    wishlistItems.push(targetProductId);
+    showNotification('Added to wishlist!', 'success');
+  }
+  
+  // Save to localStorage (brand-specific)
+  localStorage.setItem(isApplePage ? 'appleWishlist' : isAcerPage ? 'acerWishlist' : isAsusPage ? 'asusWishlist' : 'dellWishlist', JSON.stringify(wishlistItems));
+  
+  // Update wishlist button
+  updateWishlistButton(targetProductId);
+}
+
+function updateWishlistButton(productId) {
+  const wishlistBtn = document.querySelector(`.wishlist-btn[data-product="${productId}"]`);
+  if (wishlistBtn) {
+    const isInWishlist = wishlistItems.includes(productId);
+    const heartIcon = wishlistBtn.querySelector('i');
+    
+    if (heartIcon) {
+      if (isInWishlist) {
+        heartIcon.className = 'fas fa-heart';
+        wishlistBtn.style.color = '#e74c3c';
+      } else {
+        heartIcon.className = 'far fa-heart';
+        wishlistBtn.style.color = '';
+      }
+    }
+  }
+}
+
+// Order Placement
+function placeOrder() {
+  // Get form values
+  const fullName = document.getElementById('checkoutFullname').value.trim();
+  const email = document.getElementById('checkoutEmail').value.trim();
+  const address = document.getElementById('checkoutAddress').value.trim();
+  const city = document.getElementById('checkoutCity').value.trim();
+  const zip = document.getElementById('checkoutZip').value.trim();
+  const paymentMethod = document.getElementById('checkoutPayment').value;
+  const termsAgreed = document.getElementById('termsAgreement').checked;
+  
+  // Validation
+  if (!fullName || !email || !address || !city || !zip || !paymentMethod) {
+    showNotification('Please fill in all required fields', 'error');
+    return;
+  }
+  
+  if (!termsAgreed) {
+    showNotification('Please agree to the Terms & Conditions', 'error');
+    return;
+  }
+  
+  // Get current product
+  const productId = ModalManager.currentProductId;
+  if (!productId || !productData[productId]) {
+    showNotification('Product not found', 'error');
+    return;
+  }
+  
+  const product = productData[productId];
+  const quantity = parseInt(document.getElementById('checkoutQuantity').value) || 1;
+  
+  // Show processing message
+  showNotification('Processing your order...', 'info');
+  
+  // Simulate order processing
+  setTimeout(() => {
+    // Create transaction record
+    const transaction = {
+      id: 'LAPV-' + Date.now(),
+      date: new Date().toLocaleString(),
+      customer: fullName,
+      email: email,
+      product: product.name,
+      quantity: quantity,
+      unitPrice: product.price.toFixed(2),
+      payment: paymentMethod,
+      delivery: `${address}, ${city}, ${zip}`,
+      total: (product.price * quantity * (1 + product.taxRate) + product.shipping * quantity).toFixed(2),
+      status: 'Completed'
+    };
+    
+    // Save transaction to localStorage
+    let transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
+    transactions.unshift(transaction);
+    localStorage.setItem('salesTransactions', JSON.stringify(transactions));
+    
+    // Add to cart history
+    addToCart(productId);
+    
+    // Clear form
+    document.querySelectorAll('#checkoutModal input, #checkoutModal select, #checkoutModal textarea').forEach(element => {
+      if (element.type !== 'button' && element.type !== 'submit') {
+        element.value = '';
+      }
+    });
+    document.getElementById('termsAgreement').checked = false;
+    
+    // Close modals
+    ModalManager.closeAllModals();
+    
+    // Show success message
+    showNotification('✅ Order placed successfully! Redirecting to transactions...', 'success');
+    
+    // Redirect to transaction page
+    setTimeout(() => {
+      window.location.href = 'SalesTransactions.html';
+    }, 1500);
+    
+  }, 1500);
+}
+
+// Cart Counter
 function updateCartCounter() {
   const cartCounter = document.getElementById('cartCounter');
   if (cartCounter) {
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
     cartCounter.textContent = totalItems;
     cartCounter.style.display = totalItems > 0 ? 'flex' : 'none';
   }
 }
 
-// Notification system
+// Notification System
 function showNotification(message, type = 'success') {
+  // Remove existing notifications
+  document.querySelectorAll('.notification').forEach(notification => notification.remove());
+  
   const notification = document.createElement('div');
   notification.className = `notification ${type}`;
   notification.style.cssText = `
     position: fixed;
     top: 20px;
     right: 20px;
-    background: ${type === 'success' ? '#4CAF50' : '#f44336'};
+    background: ${type === 'success' ? '#27ae60' : type === 'error' ? '#e74c3c' : '#3498db'};
     color: white;
-    padding: 15px 20px;
-    border-radius: 5px;
+    padding: 15px 25px;
+    border-radius: 8px;
     z-index: 10000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
     transform: translateX(400px);
     transition: transform 0.3s ease;
+    font-weight: 500;
+    max-width: 400px;
   `;
   notification.textContent = message;
   
@@ -238,7 +365,7 @@ function showNotification(message, type = 'success') {
   // Animate in
   setTimeout(() => {
     notification.style.transform = 'translateX(0)';
-  }, 100);
+  }, 10);
   
   // Remove after 3 seconds
   setTimeout(() => {
@@ -251,184 +378,151 @@ function showNotification(message, type = 'success') {
   }, 3000);
 }
 
-// ENHANCED order placement with redirect to transaction.html
-function placeOrder() {
-  const email = document.getElementById('checkoutEmail')?.value;
-  const address = document.getElementById('checkoutAddress')?.value;
-  
-  if (!email || !address) {
-    showNotification('Please fill in all required fields', 'error');
-    return;
-  }
-  
-  // Simulate order processing
-  showNotification('Processing your order...', 'info');
-  
-  setTimeout(() => {
-    // Get order details
-    const quantity = parseInt(document.getElementById('checkoutQuantity')?.value || 1);
-    const price = parseFloat(currentProduct.price.replace('$', ''));
-    const total = price * quantity;
-    
-    // Save transaction data to localStorage
-    const transactionData = {
-      id: 'TRX-' + Date.now(),
-      date: new Date().toLocaleString(),
-      customer: email.split('@')[0] || 'Customer',
-      product: currentProduct.name,
-      quantity: quantity,
-      unitPrice: currentProduct.price,
-      payment: 'Credit Card', // Default or get from form
-      delivery: address,
-      total: `$${total.toFixed(2)}`,
-      status: 'Completed'
-    };
-    
-    // Get existing transactions or initialize
-    let transactions = JSON.parse(localStorage.getItem('salesTransactions')) || [];
-    transactions.unshift(transactionData); // Add new transaction to beginning
-    localStorage.setItem('salesTransactions', JSON.stringify(transactions));
-    
-    // Clear cart
-    cartItems = [];
-    localStorage.setItem('acerCart', JSON.stringify(cartItems));
-    updateCartCounter();
-    
-    // Reset form
-    const form = document.getElementById('checkoutForm');
-    if (form) form.reset();
-    
-    // Close modal
-    ModalManager.closeAllModals();
-    
-    // Show success message before redirect
-    showNotification('✅ Order completed! Redirecting to transactions...', 'success');
-    
-    // Redirect to transaction page after short delay
-    setTimeout(() => {
-      window.location.href = 'transaction.html';
-    }, 1000);
-    
-  }, 1500);
-}
-
-// Product comparison functionality
-function openCompareModal(productIds) {
-  // Implementation for product comparison
-  console.log('Compare products:', productIds);
-}
-
-// Wishlist functionality
-function toggleWishlist(productId) {
-  let wishlist = JSON.parse(localStorage.getItem('acerWishlist')) || [];
-  const index = wishlist.indexOf(productId);
-  
-  if (index > -1) {
-    wishlist.splice(index, 1);
-    showNotification('Removed from wishlist');
-  } else {
-    wishlist.push(productId);
-    showNotification('Added to wishlist!');
-  }
-  
-  localStorage.setItem('acerWishlist', JSON.stringify(wishlist));
-  updateWishlistButtons();
-}
-
-function updateWishlistButtons() {
-  const wishlist = JSON.parse(localStorage.getItem('acerWishlist')) || [];
-  document.querySelectorAll('.wishlist-btn').forEach(btn => {
-    const productId = btn.dataset.product;
-    if (wishlist.includes(productId)) {
-      btn.classList.add('in-wishlist');
-      btn.innerHTML = '❤️';
-    } else {
-      btn.classList.remove('in-wishlist');
-      btn.innerHTML = '🤍';
-    }
-  });
-}
-
-// Enhanced event listeners with error handling
+// Event Listeners Setup
 function setupEventListeners() {
-  // Event delegation for all interactive elements
+  // View Details Buttons
   document.addEventListener('click', function(event) {
-    const target = event.target;
-    
-    try {
-      // Product buttons
-      if (target.closest('.view-details-btn')) {
-        const btn = target.closest('.view-details-btn');
-        openProductModal(btn.dataset.product);
-      }
-      
-      // Add to cart buttons
-      if (target.closest('.add-to-cart-btn')) {
-        addToCart();
-      }
-      
-      // Wishlist buttons
-      if (target.closest('.wishlist-btn')) {
-        const btn = target.closest('.wishlist-btn');
-        toggleWishlist(btn.dataset.product);
-      }
-      
-      // Close buttons
-      if (target.closest('.close-modal')) {
-        ModalManager.closeAllModals();
-      }
-      
-      // Checkout buttons
-      if (target.closest('.checkout-btn')) {
-        openCheckoutModal();
-      }
-      
-      // Place order button
-      if (target.closest('.place-order-btn')) {
-        placeOrder();
-      }
-      
-    } catch (error) {
-      console.error('Event handler error:', error);
+    const viewDetailsBtn = event.target.closest('.view-details-btn');
+    if (viewDetailsBtn) {
+      const productId = viewDetailsBtn.dataset.product;
+      openProductModal(productId);
+      event.preventDefault();
     }
   });
   
-  // Keyboard events
+  // Checkout/Buy Now Buttons
+  document.addEventListener('click', function(event) {
+    const checkoutBtn = event.target.closest('.checkout-btn');
+    if (checkoutBtn) {
+      const productId = checkoutBtn.dataset.product;
+      openCheckoutModal(productId);
+      event.preventDefault();
+    }
+  });
+  
+  // Wishlist Buttons
+  document.addEventListener('click', function(event) {
+    const wishlistBtn = event.target.closest('.wishlist-btn');
+    if (wishlistBtn) {
+      const productId = wishlistBtn.dataset.product;
+      toggleWishlist(productId);
+      event.preventDefault();
+    }
+  });
+  
+  // Close Modal Buttons
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('close-modal')) {
+      ModalManager.closeAllModals();
+      event.preventDefault();
+    }
+  });
+  
+  // Place Order Button
+  document.addEventListener('click', function(event) {
+    if (event.target.closest('.place-order-btn')) {
+      placeOrder();
+      event.preventDefault();
+    }
+  });
+  
+  // Quantity change in checkout
+  document.addEventListener('change', function(event) {
+    if (event.target.id === 'checkoutQuantity' && ModalManager.currentProductId) {
+      const product = productData[ModalManager.currentProductId];
+      if (product) {
+        calculateAndUpdateTotals(product);
+      }
+    }
+  });
+  
+  // Close modal when clicking outside
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('modal')) {
+      ModalManager.closeAllModals();
+    }
+  });
+  
+  // Escape key to close modals
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
       ModalManager.closeAllModals();
     }
   });
   
-  // Quantity changes
-  document.addEventListener('input', function(event) {
-    if (event.target.id === 'checkoutQuantity') {
-      openCheckoutModal(); // Recalculate totals
+  // Product card click (optional - can open modal directly)
+  document.addEventListener('click', function(event) {
+    const productCard = event.target.closest('.product-card');
+    if (productCard && !event.target.closest('.view-details-btn')) {
+      const viewDetailsBtn = productCard.querySelector('.view-details-btn');
+      if (viewDetailsBtn) {
+        const productId = viewDetailsBtn.dataset.product;
+        openProductModal(productId);
+      }
     }
   });
 }
 
-// Initialize everything
-function initAcer() {
-  console.log('🚀 Initializing Acer enhanced features...');
+// Initialize Application
+function initBrand() {
+  const brandName = isApplePage ? 'Apple' : isAcerPage ? 'Acer' : isAsusPage ? 'Asus' : 'Dell';
+  console.log(`🚀 Initializing ${brandName} Page...`);
   
+  // Setup event listeners
   setupEventListeners();
+  
+  // Update cart counter
   updateCartCounter();
-  updateWishlistButtons();
+  
+  // Load wishlist status
+  wishlistItems.forEach(productId => {
+    updateWishlistButton(productId);
+  });
   
   // Make functions globally available
   window.openProductModal = openProductModal;
+  window.closeProductModal = closeProductModal;
+  window.openCheckoutModal = openCheckoutModal;
+  window.closeCheckoutModal = closeCheckoutModal;
   window.addToCart = addToCart;
   window.toggleWishlist = toggleWishlist;
   window.placeOrder = placeOrder;
   
-  console.log('✅ Acer enhanced features initialized');
+  console.log(`✅ ${brandName} Page Initialized`);
 }
 
-// Auto-initialize when Acer content is loaded
+// Auto-initialize when DOM is loaded
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAcer);
+  document.addEventListener('DOMContentLoaded', initBrand);
 } else {
-  initAcer();
+  initBrand();
 }
 
+// Add CSS for notification
+const notificationStyles = document.createElement('style');
+notificationStyles.textContent = `
+  .notification {
+    animation: slideInRight 0.3s ease;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(400px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  . .modal-backdrop {
+    animation: fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+`;
+document.head.appendChild(notificationStyles);

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/CSS/BRAND/Brand.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Apple MacBooks</title>
+</head>
+
+<body>
+
+  <!-- BIG GRAY BACKGROUND BOX -->
+  <div class="background-box"></div>
+  <!-- PAGE CONTENT WRAPPER -->
+  <div class="wrapper">
+ <aside class="sidebar">
+  <h3>BRANDS</h3>
+  <ul>
+    <li><button class="brand-btn" data-brand="Acer">ACER</button></li>
+    <li><button class="brand-btn" data-brand="Apple">APPLE</button></li>
+    <li><button class="brand-btn" data-brand="Asus">ASUS</button></li>
+    <li><button class="brand-btn" data-brand="Dell">DELL</button></li>
+    <li><button class="brand-btn" data-brand="Gigabyte">GIGABYTE</button></li>
+    <li><button class="brand-btn" data-brand="Hp">HP</button></li>
+    <li><button class="brand-btn" data-brand="Huawei">HUAWEI</button></li>
+    <li><button class="brand-btn" data-brand="Lenovo">LENOVO</button></li>
+    <li><button class="brand-btn" data-brand="Msi">MSI</button></li>
+    <li><button class="brand-btn" data-brand="Samsung">SAMSUNG</button></li>
+  </ul>
+</aside>
+
+
+    <div class="main-banner-column">
+      <!-- BANNER -->
+      <section class="banner">
+        <img src="/IMAGES/Apple/AppleLogo.jpg" alt="Apple Banner">
+      </section>
+
+      <!-- CATEGORY CARDS -->
+      <section class="category-cards">
+        <div class="card">
+          <h4>BEST MACBOOKS FOR WORK</h4>
+          <a href="#">Shop now</a>
+        </div>
+
+        <div class="card">
+          <h4>BEST MACBOOKS FOR STUDENTS</h4>
+          <a href="#">Shop now</a>
+        </div>
+
+        <div class="card">
+          <h4>BEST MACBOOKS FOR CREATIVES</h4>
+          <a href="#">Shop now</a>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="products">
+        <h2>MACBOOKS</h2>
+  
+        <div class="product-grid">
+          <!-- MacBook Air -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Apple/Apple1.png" alt="MacBook Air">
+            <p>MacBook Air</p>
+            <div class="product-specs-preview">
+              <span> Apple M1 Chip</span>
+              <span> 8GB RAM</span>
+              <span> 256GB SSD</span>
+            </div>
+            <div class="price-tag">₱55,944</div>
+            <button class="view-details-btn" data-product="apple1">
+              View Details
+            </button>
+          </div>
+
+          <!-- MacBook Pro 13" -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Apple/Apple2.png" alt="MacBook Pro 13&quot;">
+            <p>MacBook Pro 13"</p>
+            <div class="product-specs-preview">
+              <span> Apple M1 Chip</span>
+              <span> 16GB RAM</span>
+              <span> 512GB SSD</span>
+            </div>
+            <div class="price-tag">₱72,744</div>
+            <button class="view-details-btn" data-product="apple2">
+              View Details
+            </button>
+          </div>
+
+          <!-- MacBook Pro 16" -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Apple/Apple3.png" alt="MacBook Pro 16&quot;">
+            <p>MacBook Pro 16"</p>
+            <div class="product-specs-preview">
+              <span> Apple M1 Max Chip</span>
+              <span> 32GB RAM</span>
+              <span> 1TB SSD</span>
+            </div>
+            <div class="price-tag">₱139,944</div>
+            <button class="view-details-btn" data-product="apple3">
+              View Details
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      
+      <div class="product-details-container">
+        <!-- Product 1: MacBook Air -->
+        <div class="product-modal" id="apple1-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Apple/Apple1.png" alt="MacBook Air">
+            <div class="badge best-seller">BEST SELLER</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>MacBook Air</h2>
+            <div class="price-section">
+              <span class="current-price">₱55,944</span>
+              <span class="original-price">₱62,160</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"> Processor:</span> Apple M1 Chip</li>
+                <li><span class="spec-label"> RAM:</span> 8GB Unified Memory</li>
+                <li><span class="spec-label"> Storage:</span> 256GB SSD</li>
+                <li><span class="spec-label"> Display:</span> 13.3" Retina Display</li>
+                <li><span class="spec-label"> Graphics:</span> Integrated 7-core GPU</li>
+                <li><span class="spec-label"> Battery:</span> Up to 18 hours</li>
+                <li><span class="spec-label"> Weight:</span> 1.29 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">Ultra Thin</span>
+                <span class="feature-tag">Magic Keyboard</span>
+                <span class="feature-tag">Touch ID</span>
+                <span class="feature-tag">Wi-Fi 6</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-secondary checkout-btn" data-product="apple1">
+                Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="apple1">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: MacBook Pro 13" -->
+        <div class="product-modal" id="apple2-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Apple/Apple2.png" alt="MacBook Pro 13&quot;">
+            <div class="badge premium">PREMIUM</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>MacBook Pro 13"</h2>
+            <div class="price-section">
+              <span class="current-price">₱72,744</span>
+              <span class="original-price">₱80,832</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"> Processor:</span> Apple M1 Chip</li>
+                <li><span class="spec-label"> RAM:</span> 16GB Unified Memory</li>
+                <li><span class="spec-label"> Storage:</span> 512GB SSD</li>
+                <li><span class="spec-label"> Display:</span> 13.3" Retina Display</li>
+                <li><span class="spec-label"> Graphics:</span> Integrated 8-core GPU</li>
+                <li><span class="spec-label"> Battery:</span> Up to 20 hours</li>
+                <li><span class="spec-label"> Weight:</span> 1.4 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">Pro Performance</span>
+                <span class="feature-tag">Active Cooling</span>
+                <span class="feature-tag">Thunderbolt 4</span>
+                <span class="feature-tag">Face ID</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-secondary checkout-btn" data-product="apple2">
+                Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="apple2">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: MacBook Pro 16" -->
+        <div class="product-modal" id="apple3-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Apple/Apple3.png" alt="MacBook Pro 16&quot;">
+            <div class="badge gaming">PROFESSIONAL</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>MacBook Pro 16"</h2>
+            <div class="price-section">
+              <span class="current-price">₱139,944</span>
+              <span class="original-price">₱155,493</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"> Processor:</span> Apple M1 Max Chip</li>
+                <li><span class="spec-label"> RAM:</span> 32GB Unified Memory</li>
+                <li><span class="spec-label"> Storage:</span> 1TB SSD</li>
+                <li><span class="spec-label"> Display:</span> 16.2" Liquid Retina XDR</li>
+                <li><span class="spec-label"> Graphics:</span> 24-core GPU</li>
+                <li><span class="spec-label"> Battery:</span> Up to 21 hours</li>
+                <li><span class="spec-label"> Weight:</span> 2.15 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">Liquid Retina XDR</span>
+                <span class="feature-tag">Pro Workflow</span>
+                <span class="feature-tag">6 Speakers</span>
+                <span class="feature-tag">HDMI Port</span>
+              </div>
+            </div>
+            
+          
+              <button class="btn btn-secondary checkout-btn" data-product="apple3">
+                Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="apple3">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="modal checkout-modal">
+    <div class="modal-content checkout-content">
+      <span class="close-modal">&times;</span>
+      
+      <h2>Checkout</h2>
+      
+      <div class="checkout-layout">
+        <div class="checkout-form-section">
+          <h3>Shipping Information</h3>
+          
+          <div class="form-group">
+            <label for="checkoutFullname">Full Name</label>
+            <input type="text" id="checkoutFullname" placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label for="checkoutEmail">Email Address</label>
+            <input type="email" id="checkoutEmail" placeholder="Enter your email">
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="checkoutAddress">Shipping Address</label>
+            <textarea id="checkoutAddress" placeholder="Enter complete shipping address" rows="3"></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkoutCity">City</label>
+              <input type="text" id="checkoutCity" placeholder="Enter city">
+            </div>
+            
+            <div class="form-group">
+              <label for="checkoutZip">ZIP Code</label>
+              <input type="text" id="checkoutZip" placeholder="ZIP code">
+            </div>
+          </div>
+          
+          <h3 style="margin-top: 30px;">Payment Method</h3>
+          
+          <div class="form-group full-width">
+            <label for="checkoutPayment">Select Payment</label>
+            <select id="checkoutPayment">
+              <option value="">Choose payment method</option>
+              <option value="credit">Credit Card</option>
+              <option value="debit">Debit Card</option>
+              <option value="paypal">PayPal</option>
+              <option value="gcash">GCash</option>
+            </select>
+          </div>
+          
+         
+       
+            
+            
+        
+        <div class="checkout-summary-section">
+          <h3>Order Summary</h3>
+          
+          <div class="summary-item">
+            <div id="checkoutProductName">Product Name</div>
+            <div id="checkoutProductPrice">₱0.00</div>
+          </div>
+          
+          <div class="summary-item">
+            <div>Quantity</div>
+            <div>
+              <select id="checkoutQuantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="summary-breakdown">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="checkoutSubtotal">₱0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="checkoutShipping">₱15.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (10%)</span>
+              <span id="checkoutTax">₱0.00</span>
+            </div>
+          </div>
+          
+          <div class="summary-total">
+            <span>TOTAL</span>
+            <span id="checkoutTotal">₱0.00</span>
+          </div>
+          
+          <div class="terms-check">
+            <input type="checkbox" id="termsAgreement">
+            <label for="termsAgreement">I agree to the Terms & Conditions</label>
+          </div>
+          
+          <button class="btn btn-primary place-order-btn" style="width: 100%; margin-top: 20px;">
+            <i class="fas fa-lock"></i> Place Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART COUNTER -->
+  <div class="cart-counter" id="cartCounter" style="display: none;">0</div>
+
+  <script src="/JAVASCRIPT/BRAND/Acer.js"></script>
+  
+</body>
+</html>

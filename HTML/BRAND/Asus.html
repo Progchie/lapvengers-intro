@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/CSS/BRAND/Brand.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Asus Laptops</title>
+</head>
+
+<body>
+
+  <!-- BIG GRAY BACKGROUND BOX -->
+  <div class="background-box"></div>
+  <!-- PAGE CONTENT WRAPPER -->
+  <div class="wrapper">
+ <aside class="sidebar">
+  <h3>BRANDS</h3>
+  <ul>
+    <li><button class="brand-btn" data-brand="Acer">ACER</button></li>
+    <li><button class="brand-btn" data-brand="Apple">APPLE</button></li>
+    <li><button class="brand-btn" data-brand="Asus">ASUS</button></li>
+    <li><button class="brand-btn" data-brand="Dell">DELL</button></li>
+    <li><button class="brand-btn" data-brand="Gigabyte">GIGABYTE</button></li>
+    <li><button class="brand-btn" data-brand="Hp">HP</button></li>
+    <li><button class="brand-btn" data-brand="Huawei">HUAWEI</button></li>
+    <li><button class="brand-btn" data-brand="Lenovo">LENOVO</button></li>
+    <li><button class="brand-btn" data-brand="Msi">MSI</button></li>
+    <li><button class="brand-btn" data-brand="Samsung">SAMSUNG</button></li>
+  </ul>
+</aside>
+
+
+    <div class="main-banner-column">
+      <!-- BANNER -->
+      <section class="banner">
+        <img src="/IMAGES/Asus/AsusLogo.jpg" alt="Asus Banner">
+      </section>
+
+      <!-- CATEGORY CARDS -->
+      <section class="category-cards">
+        <div class="card">
+          <h4>BEST GAMING LAPTOPS</h4>
+          <a href="#">Shop now</a>
+        </div>
+
+        <div class="card">
+          <h4>BEST BUSINESS LAPTOPS</h4>
+          <a href="#">Shop now</a>
+        </div>
+
+        <div class="card">
+          <h4>BEST BUDGET LAPTOPS</h4>
+          <a href="#">Shop now</a>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section class="products">
+        <h2>LAPTOPS</h2>
+  
+        <div class="product-grid">
+          <!-- Asus ROG Strix -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Asus/Asus1.png" alt="Asus ROG Strix">
+            <p>Asus ROG Strix</p>
+            <div class="product-specs-preview">
+              <span> Intel Core i7</span>
+              <span> 16GB RAM</span>
+              <span> 1TB SSD</span>
+            </div>
+            <div class="price-tag">₱85,000</div>
+            <button class="view-details-btn" data-product="asus1">
+              View Details
+            </button>
+          </div>
+
+          <!-- Asus ZenBook Pro -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Asus/Asus2.png" alt="Asus ZenBook Pro">
+            <p>Asus ZenBook Pro</p>
+            <div class="product-specs-preview">
+              <span> Intel Core i9</span>
+              <span> 32GB RAM</span>
+              <span> 1TB SSD</span>
+            </div>
+            <div class="price-tag">₱120,000</div>
+            <button class="view-details-btn" data-product="asus2">
+              View Details
+            </button>
+          </div>
+
+          <!-- Asus VivoBook -->
+          <div class="product-card">
+            <div class="stock-indicator">In Stock</div>
+            <img src="/IMAGES/Asus/Asus3.png" alt="Asus VivoBook">
+            <p>Asus VivoBook</p>
+            <div class="product-specs-preview">
+              <span> AMD Ryzen 5</span>
+              <span> 8GB RAM</span>
+              <span> 512GB SSD</span>
+            </div>
+            <div class="price-tag">₱35,000</div>
+            <button class="view-details-btn" data-product="asus3">
+              View Details
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAILS MODAL -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      
+      <div class="product-details-container">
+        <!-- Product 1: Asus ROG Strix -->
+        <div class="product-modal" id="asus1-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Asus/Asus1.png" alt="Asus ROG Strix">
+            <div class="badge gaming">GAMING</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>Asus ROG Strix</h2>
+            <div class="price-section">
+              <span class="current-price">₱85,000</span>
+              <span class="original-price">₱95,000</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"> Processor:</span> Intel Core i7-11800H</li>
+                <li><span class="spec-label"> RAM:</span> 16GB DDR4</li>
+                <li><span class="spec-label"> Storage:</span> 1TB NVMe SSD</li>
+                <li><span class="spec-label"> Display:</span> 15.6" Full HD 144Hz</li>
+                <li><span class="spec-label"> Graphics:</span> NVIDIA GeForce RTX 3060</li>
+                <li><span class="spec-label"> Battery:</span> Up to 8 hours</li>
+                <li><span class="spec-label"> Weight:</span> 2.3 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">RGB Keyboard</span>
+                <span class="feature-tag">Aura Sync</span>
+                <span class="feature-tag">High Refresh Rate</span>
+                <span class="feature-tag">Cooling System</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-secondary checkout-btn" data-product="asus1">
+                Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="asus1">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2: Asus ZenBook Pro -->
+        <div class="product-modal" id="asus2-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Asus/Asus2.png" alt="Asus ZenBook Pro">
+            <div class="badge premium">PREMIUM</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>Asus ZenBook Pro</h2>
+            <div class="price-section">
+              <span class="current-price">₱120,000</span>
+              <span class="original-price">₱135,000</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"> Processor:</span> Intel Core i9-11900H</li>
+                <li><span class="spec-label"> RAM:</span> 32GB DDR4</li>
+                <li><span class="spec-label"> Storage:</span> 1TB NVMe SSD</li>
+                <li><span class="spec-label"> Display:</span> 15.6" 4K OLED</li>
+                <li><span class="spec-label"> Graphics:</span> NVIDIA GeForce RTX 3070</li>
+                <li><span class="spec-label"> Battery:</span> Up to 10 hours</li>
+                <li><span class="spec-label"> Weight:</span> 1.9 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">4K OLED Display</span>
+                <span class="feature-tag">ScreenPad Plus</span>
+                <span class="feature-tag">Thunderbolt 4</span>
+                <span class="feature-tag">Ergonomic Design</span>
+              </div>
+            </div>
+            
+            <div class="modal-actions">
+              <button class="btn btn-secondary checkout-btn" data-product="asus2">
+                Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="asus2">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3: Asus VivoBook -->
+        <div class="product-modal" id="asus3-modal">
+          <div class="modal-image-section">
+            <img src="/IMAGES/Asus/Asus3.png" alt="Asus VivoBook">
+            <div class="badge best-seller">BEST SELLER</div>
+          </div>
+          
+          <div class="modal-info-section">
+            <h2>Asus VivoBook</h2>
+            <div class="price-section">
+              <span class="current-price">₱35,000</span>
+              <span class="original-price">₱40,000</span>
+            </div>
+            
+            <div class="specifications">
+              <h3>Specifications</h3>
+              <ul class="specs-list">
+                <li><span class="spec-label"> Processor:</span> AMD Ryzen 5 5500U</li>
+                <li><span class="spec-label"> RAM:</span> 8GB DDR4</li>
+                <li><span class="spec-label"> Storage:</span> 512GB SSD</li>
+                <li><span class="spec-label"> Display:</span> 15.6" Full HD</li>
+                <li><span class="spec-label"> Graphics:</span> Integrated Radeon</li>
+                <li><span class="spec-label"> Battery:</span> Up to 7 hours</li>
+                <li><span class="spec-label"> Weight:</span> 1.8 kg</li>
+              </ul>
+            </div>
+            
+            <div class="features">
+              <h3>Key Features</h3>
+              <div class="feature-tags">
+                <span class="feature-tag">Lightweight</span>
+                <span class="feature-tag">Fingerprint Reader</span>
+                <span class="feature-tag">USB-C</span>
+                <span class="feature-tag">Wi-Fi 6</span>
+              </div>
+            </div>
+            
+          
+              <button class="btn btn-secondary checkout-btn" data-product="asus3">
+                Buy Now
+              </button>
+              <button class="btn btn-icon wishlist-btn" data-product="asus3">
+                <i class="far fa-heart"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkoutModal" class="modal checkout-modal">
+    <div class="modal-content checkout-content">
+      <span class="close-modal">&times;</span>
+      
+      <h2>Checkout</h2>
+      
+      <div class="checkout-layout">
+        <div class="checkout-form-section">
+          <h3>Shipping Information</h3>
+          
+          <div class="form-group">
+            <label for="checkoutFullname">Full Name</label>
+            <input type="text" id="checkoutFullname" placeholder="Enter your full name">
+          </div>
+          
+          <div class="form-group">
+            <label for="checkoutEmail">Email Address</label>
+            <input type="email" id="checkoutEmail" placeholder="Enter your email">
+          </div>
+          
+          <div class="form-group full-width">
+            <label for="checkoutAddress">Shipping Address</label>
+            <textarea id="checkoutAddress" placeholder="Enter complete shipping address" rows="3"></textarea>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkoutCity">City</label>
+              <input type="text" id="checkoutCity" placeholder="Enter city">
+            </div>
+            
+            <div class="form-group">
+              <label for="checkoutZip">ZIP Code</label>
+              <input type="text" id="checkoutZip" placeholder="ZIP code">
+            </div>
+          </div>
+          
+          <h3 style="margin-top: 30px;">Payment Method</h3>
+          
+          <div class="form-group full-width">
+            <label for="checkoutPayment">Select Payment</label>
+            <select id="checkoutPayment">
+              <option value="">Choose payment method</option>
+              <option value="credit">Credit Card</option>
+              <option value="debit">Debit Card</option>
+              <option value="paypal">PayPal</option>
+              <option value="gcash">GCash</option>
+            </select>
+          </div>
+          
+         
+       
+            
+            
+        
+        <div class="checkout-summary-section">
+          <h3>Order Summary</h3>
+          
+          <div class="summary-item">
+            <div id="checkoutProductName">Product Name</div>
+            <div id="checkoutProductPrice">₱0.00</div>
+          </div>
+          
+          <div class="summary-item">
+            <div>Quantity</div>
+            <div>
+              <select id="checkoutQuantity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="summary-breakdown">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="checkoutSubtotal">₱0.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Shipping</span>
+              <span id="checkoutShipping">₱15.00</span>
+            </div>
+            <div class="summary-row">
+              <span>Tax (10%)</span>
+              <span id="checkoutTax">₱0.00</span>
+            </div>
+          </div>
+          
+          <div class="summary-total">
+            <span>TOTAL</span>
+            <span id="checkoutTotal">₱0.00</span>
+          </div>
+          
+          <div class="terms-check">
+            <input type="checkbox" id="termsAgreement">
+            <label for="termsAgreement">I agree to the Terms & Conditions</label>
+          </div>
+          
+          <button class="btn btn-primary place-order-btn" style="width: 100%; margin-top: 20px;">
+            <i class="fas fa-lock"></i> Place Order
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CART COUNTER -->
+  <div class="cart-counter" id="cartCounter" style="display: none;">0</div>
+
+  <script src="/JAVASCRIPT/BRAND/Brand.js"></script>
+  
+</body>
+</html>
